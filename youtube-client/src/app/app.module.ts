@@ -14,13 +14,10 @@ import { SearchItemComponent } from './search/search-item/search-item.component'
     HeaderComponent,
     SearchComponent,
     SearchResultsComponent,
-    SearchItemComponent
+    SearchItemComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
