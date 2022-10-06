@@ -1,0 +1,22 @@
+.search-item {
+  padding: 20px;
+  border-bottom: 4px solid black;
+}
+
+.search-item-thumbnail img {
+  max-width: 100%;
+}
+
+.counts-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+
+}
+
+.counts-list-item {
+  display: flex;
+  align-items: center;
+}
+

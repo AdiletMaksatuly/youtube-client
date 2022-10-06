@@ -15,6 +15,11 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import { FilterComponent } from './header/filter/filter.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {SearchComponent} from "./search/search.component";
+import {SearchResultsComponent} from "./search/search-results/search-results.component";
+import {SearchItemComponent} from "./search/search-item/search-item.component";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -25,8 +30,11 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     LoginComponent,
     SearchbarComponent,
     FilterComponent,
+    SearchComponent,
+    SearchResultsComponent,
+    SearchItemComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatToolbarModule, MatInputModule, MatButtonModule, MatIconModule, MatButtonToggleModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatToolbarModule, MatInputModule, MatButtonModule, MatIconModule, MatButtonToggleModule, MatGridListModule, MatCardModule],
   providers: [],
   bootstrap: [AppComponent],
 })
