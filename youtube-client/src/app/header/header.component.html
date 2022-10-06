@@ -4,11 +4,11 @@
     <div class="header-center">
       <app-logo></app-logo>
       <app-searchbar style="flex-grow: 1"></app-searchbar>
-      <app-settings></app-settings>
+      <app-settings (click)="showFilter = !showFilter"></app-settings>
     </div>
     <app-login style="flex: 1"></app-login>
   </mat-toolbar-row>
-  <mat-toolbar-row class="container" style="justify-content: center">
+  <mat-toolbar-row *ngIf="showFilter" class="container" style="justify-content: center">
     <app-filter></app-filter>
   </mat-toolbar-row>
 </mat-toolbar>
