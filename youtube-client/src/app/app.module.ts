@@ -13,6 +13,8 @@ import { SearchbarComponent } from './header/searchbar/searchbar.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import { FilterComponent } from './header/filter/filter.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -22,8 +24,9 @@ import {MatIconModule} from "@angular/material/icon";
     SettingsComponent,
     LoginComponent,
     SearchbarComponent,
+    FilterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatToolbarModule, MatInputModule, MatButtonModule, MatIconModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatToolbarModule, MatInputModule, MatButtonModule, MatIconModule, MatButtonToggleModule],
   providers: [],
   bootstrap: [AppComponent],
 })
