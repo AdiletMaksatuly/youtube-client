@@ -20,6 +20,7 @@ import {SearchResultsComponent} from "./search/search-results/search-results.com
 import {SearchItemComponent} from "./search/search-item/search-item.component";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,20 @@ import {MatCardModule} from "@angular/material/card";
     SearchResultsComponent,
     SearchItemComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatToolbarModule, MatInputModule, MatButtonModule, MatIconModule, MatButtonToggleModule, MatGridListModule, MatCardModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatButtonToggleModule,
+    MatGridListModule,
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

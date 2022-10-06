@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'youtube-client';
+  isShowSearchResults: boolean = false;
+
+  showSearchResults() {
+    if (this.isShowSearchResults) return;
+
+    this.isShowSearchResults = true;
+  }
 }
