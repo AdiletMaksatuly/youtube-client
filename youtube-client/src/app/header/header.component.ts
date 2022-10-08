@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FilterType} from "../app.model";
 
 @Component({
   selector: 'app-header',
@@ -6,7 +7,8 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @Output() search = new EventEmitter();
+  @Output() searched = new EventEmitter();
+  @Output() filtered = new EventEmitter();
 
   showFilter: boolean = false;
 
@@ -15,6 +17,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   onSearch(searchQuery: string) {
-    this.search.emit(searchQuery);
+    this.searched.emit(searchQuery);
+  }
+
+  onFilter(filterQuery: FilterType) {
+    this.filtered.emit(filterQuery)
   }
 }

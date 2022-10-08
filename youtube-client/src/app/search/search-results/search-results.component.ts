@@ -1,5 +1,6 @@
-import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {DefaultLanguage, Item, Kind, LiveBroadcastContent} from "../search-item.model";
+import {FilterOrder, FilterType} from "../../app.model";
 
 const videos: Item[] = [
     {
@@ -749,8 +750,10 @@ defaultAudioLanguage: DefaultLanguage.En      },
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss'],
 })
-export class SearchResultsComponent implements OnInit, OnChanges {
+
+export class SearchResultsComponent implements OnChanges {
   @Input() searchQuery: string = '';
+  @Input() filterQuery: FilterType = null;
 
   videos: Item[] = videos;
   filteredVideos = videos;
@@ -761,18 +764,52 @@ export class SearchResultsComponent implements OnInit, OnChanges {
     this.searchVideos();
   }
 
-  ngOnInit(): void {
-  }
-
   searchVideos(): void {
-    if (!this.searchQuery.length) {
-      this.filteredVideos = this.videos;
-      return;
+    let videosToSort: Item[];
+
+    if (this.searchQuery.length) {
+      videosToSort = this.videos.filter(video => {
+        const lowerCasedVideoTitle = video.snippet.title.toLowerCase();
+        return lowerCasedVideoTitle.includes(this.searchQuery)
+      });
+    } else {
+      videosToSort = this.filteredVideos;
     }
 
-    this.filteredVideos = this.videos.filter(video => {
-      const lowercasedVideoTitle = video.snippet.title.toLowerCase();
-      return lowercasedVideoTitle.includes(this.searchQuery)
+    this.doSort(videosToSort);
+    console.log(this.filteredVideos);
+  }
+
+  doSort(videosToSort: Item[]) {
+    if (this.filterQuery?.date) {
+      this.sortByDate(videosToSort, this.filterQuery.date)
+    }
+    if (this.filterQuery?.countOfViews) {
+      this.sortByCountOfViews(videosToSort, this.filterQuery.countOfViews);
+    }
+  }
+
+  sortByDate(videosToSort: Item[], filterOrder: FilterOrder) {
+    this.filteredVideos = videosToSort.sort((videoA, videoB) => {
+      const videoADate = new Date(videoA.snippet.publishedAt);
+      const videoBDate = new Date(videoB.snippet.publishedAt);
+
+      // old date's ms is bigger than earlier date's ms, so when ascending, earlier date with less ms must be before old date. so, difference must be B - A.
+      // when descending, vice versa
+      return filterOrder === 'ascending'
+        ? +videoBDate - +videoADate
+        : +videoADate - +videoBDate
+    });
+  }
+
+  sortByCountOfViews(videosToSort: Item[], filterOrder: FilterOrder) {
+    this.filteredVideos = videosToSort.sort((videoA, videoB) => {
+      const videoAViews = videoA.statistics.viewCount;
+      const videoBViews = videoB.statistics.viewCount;
+
+      return filterOrder === 'ascending'
+        ? +videoAViews - +videoBViews
+        : +videoBViews - +videoAViews
     });
   }
 }

@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {FilterType} from "../app.model";
 
 @Component({
   selector: 'app-search',
@@ -7,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SearchComponent implements OnInit {
   @Input() searchQuery: string = '';
+  @Input() filterQuery: FilterType = null;
 
   constructor() {}
 
