@@ -753,5 +753,7 @@ export class SearchResultsComponent implements OnInit {
   videos: Item[] = videos;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(videos)
+  }
 }

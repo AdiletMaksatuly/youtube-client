@@ -21,20 +21,22 @@ import {SearchItemComponent} from "./search/search-item/search-item.component";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {DateHighlightDirective} from "./directives/date-highlight.directive";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    LogoComponent,
-    SettingsComponent,
-    LoginComponent,
-    SearchbarComponent,
-    FilterComponent,
-    SearchComponent,
-    SearchResultsComponent,
-    SearchItemComponent,
-  ],
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        LogoComponent,
+        SettingsComponent,
+        LoginComponent,
+        SearchbarComponent,
+        FilterComponent,
+        SearchComponent,
+        SearchResultsComponent,
+        SearchItemComponent,
+        DateHighlightDirective,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

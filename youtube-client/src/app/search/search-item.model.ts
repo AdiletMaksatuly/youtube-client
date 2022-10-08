@@ -11,7 +11,6 @@ export enum Kind {
 }
 
 export interface Snippet {
-  // publishedAt: Date;
   publishedAt: string;
   channelId: string;
   title: string;
