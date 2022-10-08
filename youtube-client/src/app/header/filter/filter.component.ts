@@ -16,6 +16,7 @@ type SelectedFilterOrderType = FilterOrder;
 
 export class FilterComponent implements OnInit {
   @Output() filtered = new EventEmitter();
+  @Output() filteredByString = new EventEmitter();
   selectedFilter: SelectedFilterType = null;
   selectedFilterOrder: SelectedFilterOrderType = 'ascending';
 
@@ -51,5 +52,10 @@ export class FilterComponent implements OnInit {
   onFilterOrderChange(selectedFilterOrder: SelectedFilterOrderType) {
     this.selectedFilterOrder = selectedFilterOrder;
     this.onFilterChange(this.selectedFilter);
+  }
+
+  onFilterStringChange(filterString: string) {
+    console.log(filterString)
+    this.filteredByString.emit(filterString);
   }
 }

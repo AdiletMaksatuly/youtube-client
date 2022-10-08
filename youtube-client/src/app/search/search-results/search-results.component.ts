@@ -754,9 +754,11 @@ defaultAudioLanguage: DefaultLanguage.En      },
 export class SearchResultsComponent implements OnChanges {
   @Input() searchQuery: string = '';
   @Input() filterQuery: FilterType = null;
+  @Input() filterString: string = '';
 
   videos: Item[] = videos;
   filteredVideos = videos;
+
 
   constructor() {}
 

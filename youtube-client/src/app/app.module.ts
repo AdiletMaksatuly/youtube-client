@@ -22,6 +22,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DateHighlightDirective} from "./directives/date-highlight.directive";
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import {DateHighlightDirective} from "./directives/date-highlight.directive";
         SearchResultsComponent,
         SearchItemComponent,
         DateHighlightDirective,
+        SearchFilterPipe,
     ],
   imports: [
     BrowserModule,

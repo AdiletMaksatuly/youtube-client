@@ -9,6 +9,7 @@ import {FilterType} from "../app.model";
 export class HeaderComponent implements OnInit {
   @Output() searched = new EventEmitter();
   @Output() filtered = new EventEmitter();
+  @Output() filteredByString = new EventEmitter();
 
   showFilter: boolean = false;
 
@@ -22,5 +23,9 @@ export class HeaderComponent implements OnInit {
 
   onFilter(filterQuery: FilterType) {
     this.filtered.emit(filterQuery)
+  }
+
+  onFilteredByString(filterString: string) {
+    this.filteredByString.emit(filterString);
   }
 }

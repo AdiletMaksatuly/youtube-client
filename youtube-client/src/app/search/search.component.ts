@@ -9,6 +9,7 @@ import {FilterType} from "../app.model";
 export class SearchComponent implements OnInit {
   @Input() searchQuery: string = '';
   @Input() filterQuery: FilterType = null;
+  @Input() filterString: string = '';
 
   constructor() {}
 
