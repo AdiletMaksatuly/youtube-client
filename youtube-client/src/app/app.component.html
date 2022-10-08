@@ -1,2 +1,2 @@
-<app-header (showSearchResults)="showSearchResults()"></app-header>
-<app-search *ngIf="isShowSearchResults"></app-search>
+<app-header (search)="showSearchResults($event)"></app-header>
+<app-search *ngIf="searchQuery !== null" [searchQuery]="searchQuery"></app-search>

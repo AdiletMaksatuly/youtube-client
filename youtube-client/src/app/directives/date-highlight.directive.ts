@@ -22,7 +22,6 @@ export class DateHighlightDirective implements OnInit {
   ngOnInit() {
     if (!this.appDateHighlight) return;
 
-    console.log(this.appDateHighlight)
     this.changeBorder(new Date(this.appDateHighlight))
   }
 

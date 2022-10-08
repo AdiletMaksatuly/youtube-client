@@ -6,11 +6,15 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @Output() showSearchResults = new EventEmitter();
+  @Output() search = new EventEmitter();
 
   showFilter: boolean = false;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onSearch(searchQuery: string) {
+    this.search.emit(searchQuery);
+  }
 }

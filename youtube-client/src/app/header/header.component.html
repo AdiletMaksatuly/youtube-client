@@ -3,7 +3,7 @@
     <div style="flex: 1"></div>
     <div class="header-center">
       <app-logo></app-logo>
-      <app-searchbar (formSubmit)="showSearchResults.emit()" style="flex-grow: 1"></app-searchbar>
+      <app-searchbar (search)="onSearch($event)" style="flex-grow: 1"></app-searchbar>
       <app-settings (click)="showFilter = !showFilter"></app-settings>
     </div>
     <app-login style="flex: 1"></app-login>

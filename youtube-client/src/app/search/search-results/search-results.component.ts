@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {DefaultLanguage, Item, Kind, LiveBroadcastContent} from "../search-item.model";
 
 const videos: Item[] = [
@@ -749,11 +749,30 @@ defaultAudioLanguage: DefaultLanguage.En      },
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss'],
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent implements OnInit, OnChanges {
+  @Input() searchQuery: string = '';
+
   videos: Item[] = videos;
+  filteredVideos = videos;
+
   constructor() {}
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.searchVideos();
+  }
+
   ngOnInit(): void {
-    console.log(videos)
+  }
+
+  searchVideos(): void {
+    if (!this.searchQuery.length) {
+      this.filteredVideos = this.videos;
+      return;
+    }
+
+    this.filteredVideos = this.videos.filter(video => {
+      const lowercasedVideoTitle = video.snippet.title.toLowerCase();
+      return lowercasedVideoTitle.includes(this.searchQuery)
+    });
   }
 }
