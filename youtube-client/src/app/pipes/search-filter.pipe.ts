@@ -1,15 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'searchFilter'
+  name: 'searchFilter',
+  pure: false,
 })
 export class SearchFilterPipe implements PipeTransform {
 
-  transform(dataToFilter: any[], query: string) {
+  transform(dataToFilter: any[], filterQuery: string, searchQuery: string) {
     if(!dataToFilter) return null;
-    if(!query) return dataToFilter;
+    if(!filterQuery && !searchQuery) return dataToFilter;
 
-    const lowerCasedQuery = query.toLowerCase();
+    const lowerCasedQuery = filterQuery ? filterQuery.toLowerCase() : searchQuery.toLowerCase();
 
     return dataToFilter.filter((data) => {
       return JSON.stringify(data).toLowerCase().includes(lowerCasedQuery);
