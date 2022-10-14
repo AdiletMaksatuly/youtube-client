@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {DefaultLanguage, Item, Kind, LiveBroadcastContent} from "../search-item.model";
-import {FilterOrder, FilterType} from "../../app.model";
+import {FilterOrder, FilterType} from "../../../../app.model";
 
 const videos: Item[] = [
     {
