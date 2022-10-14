@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FilterOrder, FilterType} from "../../app.model";
+import {FilterOrder, FilterType} from "../../../../app.model";
 
 enum FilterTypes {
   DATE = "date",
