@@ -31,6 +31,6 @@ import {YoutubeRoutingModule} from "./youtube-routing.module";
     MatButtonModule,
 
   ],
-  exports: [SearchComponent, MainPageComponent, DetailedInformationPageComponent]
+  exports: []
 })
 export class YoutubeModule { }

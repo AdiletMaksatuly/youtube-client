@@ -11,6 +11,6 @@ import {AuthRoutingModule} from "./auth-routing.module";
     CommonModule,
     AuthRoutingModule
   ],
-  exports: [LoginPageComponent],
+  exports: [],
 })
 export class AuthModule { }

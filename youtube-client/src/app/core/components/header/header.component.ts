@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FilterType} from "../../../app.model";
+import {YoutubeService} from "../../../youtube/services/youtube.service";
 
 @Component({
   selector: 'app-header',
@@ -7,25 +8,29 @@ import {FilterType} from "../../../app.model";
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @Output() searched = new EventEmitter();
-  @Output() filtered = new EventEmitter();
-  @Output() filteredByString = new EventEmitter();
-
   showFilter: boolean = false;
 
-  constructor() {}
+  constructor(private youtubeService: YoutubeService) {}
 
   ngOnInit(): void {}
 
   onSearch(searchQuery: string) {
-    this.searched.emit(searchQuery);
+    console.log('search', searchQuery)
+
+    this.youtubeService.setSearchQuery(searchQuery)
   }
 
+
+
+
+
+
+
   onFilter(filterQuery: FilterType) {
-    this.filtered.emit(filterQuery)
+    this.youtubeService.setFilterQuery(filterQuery);
   }
 
   onFilteredByString(filterString: string) {
-    this.filteredByString.emit(filterString);
+    this.youtubeService.setFilterString(filterString);
   }
 }
