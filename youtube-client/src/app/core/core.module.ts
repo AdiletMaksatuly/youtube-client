@@ -12,24 +12,28 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {FormsModule} from "@angular/forms";
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent,    LogoComponent,
+  declarations: [HeaderComponent,
+    LogoComponent,
     SettingsComponent,
     LoginComponent,
     SearchbarComponent,
-    FilterComponent,],
+    FilterComponent,
+    NotFoundPageComponent,],
   imports: [
     CommonModule,
     MatToolbarModule,
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    MatButtonToggleModule,    FormsModule,
+    MatButtonToggleModule,FormsModule,
 
   ],
-  exports: [HeaderComponent]
+  exports: [HeaderComponent, NotFoundPageComponent]
 })
+
 export class CoreModule { }
