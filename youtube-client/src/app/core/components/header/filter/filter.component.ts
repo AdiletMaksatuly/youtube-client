@@ -26,8 +26,6 @@ export class FilterComponent implements OnInit {
   }
 
   onFilterChange(selectedFilter: SelectedFilterType) {
-    console.log(selectedFilter)
-
     this.selectedFilter = selectedFilter;
     let filterQuery: FilterType = null;
 
@@ -55,7 +53,6 @@ export class FilterComponent implements OnInit {
   }
 
   onFilterStringChange(filterString: string) {
-    console.log(filterString)
     this.filteredByString.emit(filterString);
   }
 }

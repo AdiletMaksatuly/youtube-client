@@ -16,6 +16,7 @@ export class SearchbarComponent implements OnInit {
   }
 
   onSearch() {
+    console.log('submit')
     this.searched.emit(this.searchQuery.toLowerCase());
   }
 }

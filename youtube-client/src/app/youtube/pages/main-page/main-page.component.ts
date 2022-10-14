@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FilterType} from "../../../app.model";
-import {YoutubeService} from "../../services/youtube.service";
+import {YoutubeService} from "../../../core/services/youtube.service";
 
 @Component({
   selector: 'app-main-page',
