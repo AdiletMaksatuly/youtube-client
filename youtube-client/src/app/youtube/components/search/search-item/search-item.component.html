@@ -25,7 +25,7 @@
       <mat-card-title class="search-item-title">{{ video.snippet.title }}</mat-card-title>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="accent">More</button>
+      <button routerLink="detailed/{{video.id}}" mat-raised-button color="accent">More</button>
     </mat-card-actions>
   </mat-card>
 </ng-template>

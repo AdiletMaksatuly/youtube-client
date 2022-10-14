@@ -1,7 +1,7 @@
-import {Directive, ElementRef, Input, OnInit} from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 const DATES = {
-  SIX_MONTHS: 1000/*ms*/ * 60/*s*/ * 60/*min*/ * 24/*h*/ * 30/*days*/ * 6/*months*/,
+  SIX_MONTHS: 1000 /*ms*/ * 60 /*s*/ * 60 /*min*/ * 24 /*h*/ * 30 /*days*/ * 6 /*months*/,
   ONE_MONTH: 1000 * 60 * 60 * 24 * 30,
   SEVEN_DAYS: 1000 * 60 * 60 * 24 * 7,
 };
@@ -22,11 +22,10 @@ export class DateHighlightDirective implements OnInit {
   ngOnInit() {
     if (!this.appDateHighlight) return;
 
-    this.changeBorder(new Date(this.appDateHighlight))
+    this.changeBorder(new Date(this.appDateHighlight));
   }
 
-  constructor(private el: ElementRef) {
-  }
+  constructor(private el: ElementRef) {}
 
   changeBorder(videoDate: Date) {
     const videoDateMs = +videoDate;

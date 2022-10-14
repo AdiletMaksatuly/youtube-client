@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import {FilterType} from "../../app.model";
-import {BehaviorSubject, Observable} from "rxjs";
+import { FilterType } from '../../app.model';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class YoutubeService {
-  searchQuery = new BehaviorSubject<string | null>(null)
-  filterQuery = new BehaviorSubject<FilterType>(null);
-  filterString = new BehaviorSubject('');
+export class SearchService {
+  searchQuery = new BehaviorSubject<string | null>(null);
 
-  constructor() { }
+  filterQuery = new BehaviorSubject<FilterType>(null);
+
+  filterString = new BehaviorSubject('');
 
   getSearchQuery(): Observable<string | null> {
     return this.searchQuery.asObservable();
