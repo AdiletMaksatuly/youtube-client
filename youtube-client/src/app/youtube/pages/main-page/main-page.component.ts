@@ -24,9 +24,7 @@ export class MainPageComponent implements OnInit {
 
   getSearchQuery() {
     this.youtubeService.getSearchQuery().subscribe((searchQuery) => {
-      console.log(this.searchQuery);
       this.searchQuery = searchQuery;
-      console.log(this.searchQuery);
       return this.searchQuery;
     });
   }

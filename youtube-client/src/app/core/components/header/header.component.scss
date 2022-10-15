@@ -2,6 +2,14 @@
   padding: 20px 0;
 }
 
+.header-login, .header-logout {
+  flex: 1;
+}
+
+.header-logout {
+  text-align: right;
+}
+
 .header-center{
   display: flex;
   align-items: center;
@@ -9,6 +17,19 @@
   gap: 20px
 }
 
+.header-searchbar {
+  flex-grow: 1;
+}
+
 .header-row {
   height: auto;
+}
+
+.header-row-search {
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.header-row-filter {
+  justify-content: center;
 }

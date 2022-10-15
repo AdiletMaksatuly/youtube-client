@@ -11,7 +11,6 @@ export class SearchbarComponent {
   searchQuery: string = '';
 
   onSearch() {
-    console.log('submit');
     this.searched.emit(this.searchQuery.toLowerCase());
   }
 }

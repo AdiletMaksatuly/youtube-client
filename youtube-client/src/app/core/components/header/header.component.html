@@ -1,14 +1,15 @@
 <mat-toolbar class="header">
-  <mat-toolbar-row class="header-row container" style="justify-content: space-between; gap: 20px">
-    <div style="flex: 1"></div>
+  <mat-toolbar-row class="header-row header-row-search container">
+    <app-login class="header-login"></app-login>
     <div class="header-center">
       <app-logo></app-logo>
-      <app-searchbar (searched)="onSearch($event)" style="flex-grow: 1"></app-searchbar>
+      <app-searchbar (searched)="onSearch($event)" class="header-searchbar"></app-searchbar>
       <app-settings (click)="showFilter = !showFilter"></app-settings>
     </div>
-    <app-login style="flex: 1"></app-login>
+    <app-logout *ngIf="isMainPage" class="header-logout"></app-logout>
+    <div *ngIf="!isMainPage" style="flex-grow: 1"></div>
   </mat-toolbar-row>
-  <mat-toolbar-row *ngIf="showFilter" class="header-row container" style="justify-content: center">
+  <mat-toolbar-row *ngIf="showFilter" class="header-row header-row-filter container">
     <app-filter (filtered)="onFilter($event)" (filteredByString)="onFilteredByString($event)"></app-filter>
   </mat-toolbar-row>
 </mat-toolbar>

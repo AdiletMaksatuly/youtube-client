@@ -1,20 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FilterType } from '../../../app.model';
 import { SearchService } from '../../services/search.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   showFilter: boolean = false;
 
-  constructor(private youtubeService: SearchService) {}
+  isMainPage: boolean = false;
+
+  constructor(private youtubeService: SearchService, private router: Router) {}
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (!(event instanceof NavigationEnd)) return;
+
+      this.isMainPage = event.url.includes('main');
+    });
+  }
 
   onSearch(searchQuery: string) {
-    console.log('search', searchQuery);
-
     this.youtubeService.setSearchQuery(searchQuery);
   }
 

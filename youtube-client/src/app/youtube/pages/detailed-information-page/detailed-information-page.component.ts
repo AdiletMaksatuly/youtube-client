@@ -32,7 +32,6 @@ export class DetailedInformationPageComponent implements OnInit {
     const gotVideo = this.youtubeService.getVideo(this.id || '');
     gotVideo?.subscribe((video) => {
       this.video = video;
-      console.log(this.video);
     });
   }
 

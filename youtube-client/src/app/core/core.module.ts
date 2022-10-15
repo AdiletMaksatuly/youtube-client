@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { LogoutComponent } from './components/header/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
     SearchbarComponent,
     FilterComponent,
     NotFoundPageComponent,
+    LogoutComponent,
   ],
   imports: [
     CommonModule,

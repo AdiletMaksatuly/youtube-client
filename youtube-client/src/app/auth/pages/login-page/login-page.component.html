@@ -1,20 +1,7 @@
 <main>
   <section>
     <div class="container">
-      <form class="login-form">
-        <h1>Login</h1>
-        <mat-form-field class="login-form-field" appearance="fill">
-          <mat-label>Login</mat-label>
-          <input matInput placeholder="Username">
-        </mat-form-field>
-
-        <mat-form-field class="login-form-field" appearance="fill">
-          <mat-label>Password</mat-label>
-          <input matInput type="password">
-        </mat-form-field>
-
-        <button type="submit" mat-flat-button color="primary">Submit</button>
-      </form>
+      <app-login-form (submitted)="onLogin($event)"></app-login-form>
     </div>
   </section>
 </main>
