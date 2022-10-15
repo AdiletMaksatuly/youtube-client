@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e8b7df0-bcaa-4043-a248-b16bf862d1eb" name="Changes" comment="fix: add missing import" />
+    <list default="true" id="2e8b7df0-bcaa-4043-a248-b16bf862d1eb" name="Changes" comment="update gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/adiletmaksatuly-ANGULAR2022Q3.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules-services-routing/3rdpartylicenses.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules-services-routing/41.c75865e90a46dcae.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules-services-routing/935.f9660482378f6a3a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules-services-routing/assets/images/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules-services-routing/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules-services-routing/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules-services-routing/main.8df6ad6e82b99f8b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules-services-routing/polyfills.5e3df55b8b553b09.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules-services-routing/runtime.f635b4ca3a91b095.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules-services-routing/styles.a075493b4a0d87ec.css" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +87,7 @@
       <workItem from="1665740130559" duration="23476000" />
       <workItem from="1665843581629" duration="4100000" />
       <workItem from="1665848462113" duration="9335000" />
-      <workItem from="1665860233964" duration="45000" />
+      <workItem from="1665860423484" duration="36000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add angular material to the project">
       <created>1665079412951</created>
@@ -257,7 +274,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="modules-services-routing" />
+                        <option value="gh-pages" />
                       </list>
                     </value>
                   </entry>
@@ -293,6 +310,7 @@
     <MESSAGE value="feat: implement login service and auth logic" />
     <MESSAGE value="feat: implement auth guard" />
     <MESSAGE value="fix: add missing import" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: add missing import" />
+    <MESSAGE value="update gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="update gitignore" />
   </component>
 </project>
