@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { LoginFormValues } from '../../models/auth.model';
 
 @Component({
   selector: 'app-login-form',
