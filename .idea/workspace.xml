@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2e8b7df0-bcaa-4043-a248-b16bf862d1eb" name="Changes" comment="fix: add missing import" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2FXqVZXQgaYOzX3Ub3tU7EiiiCD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "NewWatcherDialog.advanced.open": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.selected.package.eslint": "/Users/admin/Desktop/adiletmaksatuly-ANGULAR2022Q3/youtube-client/node_modules/eslint",
+    "node.js.selected.package.standard": "",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "/Users/admin/Desktop/adiletmaksatuly-ANGULAR2022Q3/youtube-client/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/youtube-client/src/app/core/components/header" />
+      <recent name="$PROJECT_DIR$/youtube-client/src/app/core/services" />
+      <recent name="$PROJECT_DIR$/youtube-client/src/app/youtube" />
+      <recent name="$PROJECT_DIR$/youtube-client/src/app/youtube/components" />
+      <recent name="$PROJECT_DIR$/youtube-client/src/app/core/components" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2e8b7df0-bcaa-4043-a248-b16bf862d1eb" name="Changes" comment="" />
+      <created>1664648805686</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1664648805686</updated>
+      <workItem from="1664648813002" duration="1793000" />
+      <workItem from="1665077186014" duration="17839000" />
+      <workItem from="1665145117031" duration="2102000" />
+      <workItem from="1665226233421" duration="4665000" />
+      <workItem from="1665236640613" duration="10482000" />
+      <workItem from="1665257020560" duration="494000" />
+      <workItem from="1665257534779" duration="137000" />
+      <workItem from="1665495195796" duration="64000" />
+      <workItem from="1665740130559" duration="23476000" />
+      <workItem from="1665843581629" duration="4100000" />
+      <workItem from="1665848462113" duration="9335000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat: add angular material to the project">
+      <created>1665079412951</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1665079412951</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: build header layout">
+      <created>1665085282381</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1665085282381</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: build filter-block layout">
+      <created>1665086135635</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1665086135635</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: build search section layout">
+      <created>1665091719022</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1665091719022</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: add mock data">
+      <created>1665094625125</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1665094625125</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: make filter block toggleable">
+      <created>1665095035517</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1665095035517</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: make search results appear by submitting the search form">
+      <created>1665098601162</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1665098601162</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: create directive that change border color depending on date">
+      <created>1665228108126</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1665228108126</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: implement fake search functionality">
+      <created>1665231828046</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1665231828046</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: implement sort by date and views count">
+      <created>1665244031492</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1665244031492</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: implement filtering by search query">
+      <created>1665255408773</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1665255408773</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fix: make searchbar work when filtering by search query too">
+      <created>1665256490587</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1665256490587</updated>
+    </task>
+    <task id="LOCAL-00013" summary="refactor: create core module">
+      <created>1665741783651</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1665741783651</updated>
+    </task>
+    <task id="LOCAL-00014" summary="refactor: create core module">
+      <created>1665742440321</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1665742440321</updated>
+    </task>
+    <task id="LOCAL-00015" summary="refactor: create youtube module">
+      <created>1665742917137</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1665742917137</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat: implement routing and add necessary pages">
+      <created>1665745026383</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1665745026383</updated>
+    </task>
+    <task id="LOCAL-00017" summary="refactor: implement youtube service instead of input/output">
+      <created>1665754475574</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1665754475574</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fix: implement correct searching and filtering in pipe">
+      <created>1665759675322</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1665759675322</updated>
+    </task>
+    <task id="LOCAL-00019" summary="feat: add detailed information page layout">
+      <created>1665765646926</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1665765646926</updated>
+    </task>
+    <task id="LOCAL-00020" summary="feat: implement detailed information page logic">
+      <created>1665847686602</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1665847686602</updated>
+    </task>
+    <task id="LOCAL-00021" summary="feat: implement login page layout">
+      <created>1665849189102</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1665849189102</updated>
+    </task>
+    <task id="LOCAL-00022" summary="feat: implement login service and auth logic">
+      <created>1665854457564</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1665854457564</updated>
+    </task>
+    <task id="LOCAL-00023" summary="feat: implement auth guard">
+      <created>1665857405775</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1665857405775</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fix: add missing import">
+      <created>1665857851721</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1665857851721</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="modules-services-routing" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: add angular material to the project" />
+    <MESSAGE value="feat: build header layout" />
+    <MESSAGE value="feat: build filter-block layout" />
+    <MESSAGE value="feat: build search section layout" />
+    <MESSAGE value="feat: add mock data" />
+    <MESSAGE value="feat: make filter block toggleable" />
+    <MESSAGE value="feat: make search results appear by submitting the search form" />
+    <MESSAGE value="feat: create directive that change border color depending on date" />
+    <MESSAGE value="feat: implement fake search functionality" />
+    <MESSAGE value="feat: implement sort by date and views count" />
+    <MESSAGE value="feat: implement filtering by search query" />
+    <MESSAGE value="fix: make searchbar work when filtering by search query too" />
+    <MESSAGE value="refactor: create core module" />
+    <MESSAGE value="refactor: create youtube module" />
+    <MESSAGE value="feat: implement routing and add necessary pages" />
+    <MESSAGE value="refactor: implement youtube service instead of input/output" />
+    <MESSAGE value="fix: implement correct searching and filtering in pipe" />
+    <MESSAGE value="feat: add detailed information page layout" />
+    <MESSAGE value="feat: implement detailed information page logic" />
+    <MESSAGE value="feat: implement login page layout" />
+    <MESSAGE value="feat: implement login service and auth logic" />
+    <MESSAGE value="feat: implement auth guard" />
+    <MESSAGE value="fix: add missing import" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: add missing import" />
+  </component>
+</project>
