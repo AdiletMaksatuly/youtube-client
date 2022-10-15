@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from './auth/guards/login.guard';
 const routes: Routes = [
   {
     path: 'login',
@@ -8,6 +9,7 @@ const routes: Routes = [
   {
     path: 'main',
     loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
+    canLoad: [LoginGuard],
   },
   {
     path: '',

@@ -10,7 +10,7 @@ export class LoginFormComponent {
   @Output() submitted = new EventEmitter();
 
   loginForm = this.formBuilder.group({
-    login: ['', [Validators.required]],
+    username: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(5)]],
   });
 
@@ -21,7 +21,7 @@ export class LoginFormComponent {
   onSubmit() {
     if (this.loginForm.invalid) return;
 
-    this.submitted.emit(this.loginForm.value);
+    this.submitted.emit(this.loginForm.value as LoginFormValues);
   }
 
   getPasswordErrorMessage(): string {
