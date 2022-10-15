@@ -1,0 +1,18 @@
+<ul class="video-stats" [class.video-stats-center]="isCentered">
+  <li class="video-stats-item">
+    <mat-icon aria-hidden="false" aria-label="Views count">remove_red_eye</mat-icon>
+    {{ stats.viewCount }}
+  </li>
+  <li class="video-stats-item">
+    <mat-icon aria-hidden="false" aria-label="Views count">thumb_up</mat-icon>
+    {{ stats.likeCount }}
+  </li>
+  <li class="video-stats-item">
+    <mat-icon aria-hidden="false" aria-label="Views count">thumb_down</mat-icon>
+    {{ stats.dislikeCount }}
+  </li>
+  <li class="video-stats-item">
+    <mat-icon aria-hidden="false" aria-label="Views count">insert_comment</mat-icon>
+    {{ stats.commentCount }}
+  </li>
+</ul>

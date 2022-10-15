@@ -12,6 +12,8 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { DetailedInformationPageComponent } from './pages/detailed-information-page/detailed-information-page.component';
 import { YoutubeRoutingModule } from './youtube-routing.module';
+import { VideoDetailsComponent } from './components/video-details/video-details.component';
+import { VideoStatsComponent } from './components/video-stats/video-stats.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
     SearchFilterPipe,
     MainPageComponent,
     DetailedInformationPageComponent,
+    VideoDetailsComponent,
+    VideoStatsComponent,
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { Video } from '../../components/search/search-item.model';
 import { YoutubeService } from '../../services/youtube.service';
 
@@ -13,7 +14,11 @@ export class DetailedInformationPageComponent implements OnInit {
 
   video: Video = {} as Video;
 
-  constructor(private route: ActivatedRoute, private youtubeService: YoutubeService) {
+  constructor(
+    private route: ActivatedRoute,
+    private youtubeService: YoutubeService,
+    private location: Location,
+  ) {
     this.route.url.subscribe((url) => {
       this.id = url[url.length - 1].path;
     });
@@ -29,5 +34,9 @@ export class DetailedInformationPageComponent implements OnInit {
       this.video = video;
       console.log(this.video);
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

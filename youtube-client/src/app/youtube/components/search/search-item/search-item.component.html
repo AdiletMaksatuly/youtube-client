@@ -4,24 +4,7 @@
       <img mat-card-image [src]="video.snippet.thumbnails.medium.url" alt="Photo of a Shiba Inu">
     </div>
     <mat-card-content>
-      <ul class="counts-list">
-        <li class="counts-list-item">
-          <mat-icon aria-hidden="false" aria-label="Views count">remove_red_eye</mat-icon>
-          {{ video.statistics.viewCount }}
-        </li>
-        <li class="counts-list-item">
-          <mat-icon aria-hidden="false" aria-label="Views count">thumb_up</mat-icon>
-          {{ video.statistics.likeCount }}
-        </li>
-        <li class="counts-list-item">
-          <mat-icon aria-hidden="false" aria-label="Views count">thumb_down</mat-icon>
-          {{ video.statistics.dislikeCount }}
-        </li>
-        <li class="counts-list-item">
-          <mat-icon aria-hidden="false" aria-label="Views count">insert_comment</mat-icon>
-          {{ video.statistics.commentCount }}
-        </li>
-      </ul>
+     <app-video-stats [stats]="video.statistics"></app-video-stats>
       <mat-card-title class="search-item-title">{{ video.snippet.title }}</mat-card-title>
     </mat-card-content>
     <mat-card-actions>
