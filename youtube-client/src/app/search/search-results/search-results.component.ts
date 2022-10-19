@@ -792,7 +792,7 @@ export class SearchResultsComponent implements OnChanges {
 
     if (this.searchQuery.length) {
       videosToSort = this.videos.filter((video) => {
-        const lowerCasedVideoTitle = video.snippet.title.toLowerCase();
+        const lowerCasedVideoTitle: string = video.snippet.title.toLowerCase();
         return lowerCasedVideoTitle.includes(this.searchQuery);
       });
     } else {
@@ -812,9 +812,9 @@ export class SearchResultsComponent implements OnChanges {
   }
 
   sortByDate(videosToSort: Video[], filterOrder: FilterOrder): void {
-    this.filteredVideos = videosToSort.sort((videoA, videoB) => {
-      const videoADate = new Date(videoA.snippet.publishedAt);
-      const videoBDate = new Date(videoB.snippet.publishedAt);
+    this.filteredVideos = videosToSort.sort((videoA: Video, videoB: Video) => {
+      const videoADate: Date = new Date(videoA.snippet.publishedAt);
+      const videoBDate: Date = new Date(videoB.snippet.publishedAt);
 
       // old date's ms is bigger than earlier date's ms, so when ascending, earlier date with less ms must be before old date. so, difference must be B - A.
       // when descending, vice versa
@@ -823,9 +823,9 @@ export class SearchResultsComponent implements OnChanges {
   }
 
   sortByCountOfViews(videosToSort: Video[], filterOrder: FilterOrder): void {
-    this.filteredVideos = videosToSort.sort((videoA, videoB) => {
-      const videoAViews = videoA.statistics.viewCount;
-      const videoBViews = videoB.statistics.viewCount;
+    this.filteredVideos = videosToSort.sort((videoA: Video, videoB: Video) => {
+      const videoAViews: string = videoA.statistics.viewCount;
+      const videoBViews: string = videoB.statistics.viewCount;
 
       return filterOrder === 'ascending'
         ? +videoAViews - +videoBViews

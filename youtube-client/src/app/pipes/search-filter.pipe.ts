@@ -10,7 +10,9 @@ export class SearchFilterPipe implements PipeTransform {
     if (!dataToFilter) return null;
     if (!filterQuery && !searchQuery) return dataToFilter;
 
-    const lowerCasedQuery = filterQuery ? filterQuery.toLowerCase() : searchQuery.toLowerCase();
+    const lowerCasedQuery: string = filterQuery
+      ? filterQuery.toLowerCase()
+      : searchQuery.toLowerCase();
 
     return dataToFilter.filter((data) => {
       return JSON.stringify(data).toLowerCase().includes(lowerCasedQuery);
