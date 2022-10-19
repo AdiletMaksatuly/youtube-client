@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import {FilterOrder, FilterType, FilterTypes} from 'src/app/models/filter.model';
+import { FilterOrder, FilterType, FilterTypes } from 'src/app/models/filter.model';
 
 type SelectedFilterType = FilterTypes.DATE | FilterTypes.COUNT_OF_VIEWS | null;
 
@@ -17,7 +17,7 @@ export class FilterComponent {
 
   selectedFilterOrder: FilterOrder = 'ascending';
 
-  onFilterChange(selectedFilter: SelectedFilterType) {
+  onFilterChange(selectedFilter: SelectedFilterType): void {
     this.selectedFilter = selectedFilter;
     let filterQuery: FilterType = null;
 
@@ -38,12 +38,12 @@ export class FilterComponent {
     this.filtered.emit(filterQuery);
   }
 
-  onFilterOrderChange(selectedFilterOrder: FilterOrder) {
+  onFilterOrderChange(selectedFilterOrder: FilterOrder): void {
     this.selectedFilterOrder = selectedFilterOrder;
     this.onFilterChange(this.selectedFilter);
   }
 
-  onFilterStringChange(filterString: string) {
+  onFilterStringChange(filterString: string): void {
     this.filteredByString.emit(filterString);
   }
 }

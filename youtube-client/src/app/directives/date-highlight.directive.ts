@@ -19,7 +19,7 @@ enum COLORS {
 export class DateHighlightDirective implements OnInit {
   @Input() appDateHighlight: string | undefined;
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (!this.appDateHighlight) return;
 
     this.changeBorder(new Date(this.appDateHighlight));
@@ -27,7 +27,7 @@ export class DateHighlightDirective implements OnInit {
 
   constructor(private el: ElementRef) {}
 
-  changeBorder(videoDate: Date) {
+  changeBorder(videoDate: Date): void {
     const videoDateMs = +videoDate;
     let color: COLORS;
 

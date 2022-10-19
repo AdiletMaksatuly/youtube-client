@@ -3,7 +3,7 @@ import {
   VideoDefaultLanguage,
   Video,
   VideoKind,
-  VideoLiveBroadcastContent
+  VideoLiveBroadcastContent,
 } from '../../models/video.model';
 import { FilterOrder, FilterType } from '../../models/filter.model';
 
@@ -783,7 +783,7 @@ export class SearchResultsComponent implements OnChanges {
 
   filteredVideos = videos;
 
-  ngOnChanges() {
+  ngOnChanges(): void {
     this.searchVideos();
   }
 
@@ -802,7 +802,7 @@ export class SearchResultsComponent implements OnChanges {
     this.doSort(videosToSort);
   }
 
-  doSort(videosToSort: Video[]) {
+  doSort(videosToSort: Video[]): void {
     if (this.filterQuery?.date) {
       this.sortByDate(videosToSort, this.filterQuery.date);
     }
@@ -811,7 +811,7 @@ export class SearchResultsComponent implements OnChanges {
     }
   }
 
-  sortByDate(videosToSort: Video[], filterOrder: FilterOrder) {
+  sortByDate(videosToSort: Video[], filterOrder: FilterOrder): void {
     this.filteredVideos = videosToSort.sort((videoA, videoB) => {
       const videoADate = new Date(videoA.snippet.publishedAt);
       const videoBDate = new Date(videoB.snippet.publishedAt);
@@ -822,7 +822,7 @@ export class SearchResultsComponent implements OnChanges {
     });
   }
 
-  sortByCountOfViews(videosToSort: Video[], filterOrder: FilterOrder) {
+  sortByCountOfViews(videosToSort: Video[], filterOrder: FilterOrder): void {
     this.filteredVideos = videosToSort.sort((videoA, videoB) => {
       const videoAViews = videoA.statistics.viewCount;
       const videoBViews = videoB.statistics.viewCount;

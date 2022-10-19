@@ -15,15 +15,15 @@ export class HeaderComponent {
 
   showFilter: boolean = false;
 
-  onSearch(searchQuery: string) {
+  onSearch(searchQuery: string): void {
     this.searched.emit(searchQuery);
   }
 
-  onFilter(filterQuery: FilterType) {
+  onFilter(filterQuery: FilterType): void {
     this.filtered.emit(filterQuery);
   }
 
-  onFilteredByString(filterString: string) {
+  onFilteredByString(filterString: string): void {
     this.filteredByString.emit(filterString);
   }
 }

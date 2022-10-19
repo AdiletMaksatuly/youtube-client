@@ -20,7 +20,10 @@
         "plugin:import/recommended",
         "airbnb-typescript/base",
         "plugin:prettier/recommended"
-      ]
+      ],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "warn"
+      }
     },
     {
       "files": [

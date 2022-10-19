@@ -15,15 +15,15 @@ export class AppComponent {
 
   filterString: string = '';
 
-  showSearchResults(searchQuery: string) {
+  showSearchResults(searchQuery: string): void {
     this.searchQuery = searchQuery;
   }
 
-  applyFilter(filterQuery: FilterType) {
+  applyFilter(filterQuery: FilterType): void {
     this.filterQuery = filterQuery;
   }
 
-  setFilterString(filterString: string) {
+  setFilterString(filterString: string): void {
     this.filterString = filterString;
   }
 }

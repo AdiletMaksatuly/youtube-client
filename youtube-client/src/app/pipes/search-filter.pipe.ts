@@ -1,11 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Video } from '../models/video.model';
 
 @Pipe({
   name: 'searchFilter',
   pure: false,
 })
 export class SearchFilterPipe implements PipeTransform {
-  transform(dataToFilter: any[], filterQuery: string, searchQuery: string) {
+  transform(dataToFilter: Video[], filterQuery: string, searchQuery: string): Video[] | null {
     if (!dataToFilter) return null;
     if (!filterQuery && !searchQuery) return dataToFilter;
 
