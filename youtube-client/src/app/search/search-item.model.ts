@@ -1,60 +1,60 @@
-export interface Item {
-  kind: Kind;
+export interface Video {
+  kind: VideoKind;
   etag: string;
   id: string;
-  snippet: Snippet;
-  statistics: Statistics;
+  snippet: VideoSnippet;
+  statistics: VideoStatistics;
 }
 
-export enum Kind {
+export enum VideoKind {
   YoutubeVideo = 'youtube#video',
 }
 
-export interface Snippet {
+export interface VideoSnippet {
   publishedAt: string;
   channelId: string;
   title: string;
   description: string;
-  thumbnails: Thumbnails;
+  thumbnails: VideoThumbnails;
   channelTitle: string;
   tags: string[];
   categoryId: string;
-  liveBroadcastContent: LiveBroadcastContent;
-  localized: Localized;
-  defaultAudioLanguage: DefaultLanguage;
-  defaultLanguage?: DefaultLanguage;
+  liveBroadcastContent: VideoLiveBroadcastContent;
+  localized: VideoLocalized;
+  defaultAudioLanguage: VideoDefaultLanguage;
+  defaultLanguage?: VideoDefaultLanguage;
 }
 
-export enum DefaultLanguage {
+export enum VideoDefaultLanguage {
   En = 'en',
   EnUS = 'en-US',
   Ru = 'ru',
 }
 
-export enum LiveBroadcastContent {
+export enum VideoLiveBroadcastContent {
   None = 'none',
 }
 
-export interface Localized {
+export interface VideoLocalized {
   title: string;
   description: string;
 }
 
-export interface Thumbnails {
-  default: Default;
-  medium: Default;
-  high: Default;
-  standard: Default;
-  maxres: Default;
+export interface VideoThumbnails {
+  default: VideoThumbnail;
+  medium: VideoThumbnail;
+  high: VideoThumbnail;
+  standard: VideoThumbnail;
+  maxres: VideoThumbnail;
 }
 
-export interface Default {
+export interface VideoThumbnail {
   url: string;
   width: number;
   height: number;
 }
 
-export interface Statistics {
+export interface VideoStatistics {
   viewCount: string;
   likeCount: string;
   dislikeCount: string;
