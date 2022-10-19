@@ -28,14 +28,17 @@ export class DateHighlightDirective implements OnInit {
   constructor(private el: ElementRef) {}
 
   changeBorder(videoDate: Date): void {
+    const todayDateMs = +(new Date());
     const videoDateMs = +videoDate;
+    const diff = todayDateMs - videoDateMs;
+
     let color: COLORS;
 
-    if (videoDateMs > DATES.SIX_MONTHS) {
+    if (diff > DATES.SIX_MONTHS) {
       color = COLORS.MORE_THAN_SIX_MONTHS;
-    } else if (videoDateMs > DATES.ONE_MONTH) {
+    } else if (diff > DATES.ONE_MONTH) {
       color = COLORS.MORE_THAN_MONTH;
-    } else if (videoDateMs > DATES.SEVEN_DAYS) {
+    } else if (diff > DATES.SEVEN_DAYS) {
       color = COLORS.MORE_THAN_SEVEN_DAYS;
     } else {
       color = COLORS.LESS_THAN_SEVEN_DAYS;
