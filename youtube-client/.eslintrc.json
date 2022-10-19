@@ -20,38 +20,7 @@
         "plugin:import/recommended",
         "airbnb-typescript/base",
         "plugin:prettier/recommended"
-      ],
-      "rules": {
-        "import/no-unresolved": "off",
-        "import/prefer-default-export": "off",
-        "class-methods-use-this": "off",
-        "@typescript-eslint/no-useless-constructor": "off",
-        "@typescript-eslint/no-empty-function": "off",
-        "lines-between-class-members": "off",
-        "@typescript-eslint/unbound-method": [
-          "error",
-          {
-            "ignoreStatic": true
-          }
-        ],
-        "@angular-eslint/no-empty-lifecycle-method": "off",
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "app",
-            "style": "camelCase"
-          }
-        ],
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "app",
-            "style": "kebab-case"
-          }
-        ]
-      }
+      ]
     },
     {
       "files": [

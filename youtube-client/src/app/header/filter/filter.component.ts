@@ -1,9 +1,9 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FilterOrder, FilterType} from "../../app.model";
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FilterOrder, FilterType } from '../../app.model';
 
 enum FilterTypes {
-  DATE = "date",
-  COUNT_OF_VIEWS = "count_of_views"
+  DATE = 'date',
+  COUNT_OF_VIEWS = 'count_of_views',
 }
 type SelectedFilterType = FilterTypes.DATE | FilterTypes.COUNT_OF_VIEWS | null;
 type SelectedFilterOrderType = FilterOrder;
@@ -11,22 +11,19 @@ type SelectedFilterOrderType = FilterOrder;
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss']
+  styleUrls: ['./filter.component.scss'],
 })
-
-export class FilterComponent implements OnInit {
+export class FilterComponent {
   @Output() filtered = new EventEmitter();
+
   @Output() filteredByString = new EventEmitter();
+
   selectedFilter: SelectedFilterType = null;
+
   selectedFilterOrder: SelectedFilterOrderType = 'ascending';
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   onFilterChange(selectedFilter: SelectedFilterType) {
-    console.log(selectedFilter)
+    console.log(selectedFilter);
 
     this.selectedFilter = selectedFilter;
     let filterQuery: FilterType = null;
@@ -42,11 +39,11 @@ export class FilterComponent implements OnInit {
       filterQuery = {
         countOfViews: this.selectedFilterOrder,
         date: null,
-      }
+      };
     }
 
     this.filtered.emit(filterQuery);
-    console.log(filterQuery)
+    console.log(filterQuery);
   }
 
   onFilterOrderChange(selectedFilterOrder: SelectedFilterOrderType) {
@@ -55,7 +52,7 @@ export class FilterComponent implements OnInit {
   }
 
   onFilterStringChange(filterString: string) {
-    console.log(filterString)
+    console.log(filterString);
     this.filteredByString.emit(filterString);
   }
 }
