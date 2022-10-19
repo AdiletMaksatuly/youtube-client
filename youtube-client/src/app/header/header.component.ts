@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FilterType } from '../app.model';
+import { FilterType } from '../models/filter.model';
 
 @Component({
   selector: 'app-header',

@@ -4,8 +4,8 @@ import {
   Video,
   VideoKind,
   VideoLiveBroadcastContent
-} from '../search-item.model';
-import { FilterOrder, FilterType } from '../../app.model';
+} from '../../models/video.model';
+import { FilterOrder, FilterType } from '../../models/filter.model';
 
 const videos: Video[] = [
   {
@@ -800,7 +800,6 @@ export class SearchResultsComponent implements OnChanges {
     }
 
     this.doSort(videosToSort);
-    console.log(this.filteredVideos);
   }
 
   doSort(videosToSort: Video[]) {
