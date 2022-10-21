@@ -9,6 +9,9 @@
     <app-login style="flex: 1"></app-login>
   </mat-toolbar-row>
   <mat-toolbar-row *ngIf="showFilter" class="header-row container" style="justify-content: center">
-    <app-filter (filtered)="onFilter($event)" (filteredByString)="onFilteredByString($event)"></app-filter>
+    <app-filter
+      (filtered)="onFilter($event)"
+      (filteredByString)="onFilteredByString($event)"
+    ></app-filter>
   </mat-toolbar-row>
 </mat-toolbar>

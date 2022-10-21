@@ -2,20 +2,35 @@
   <ul>
     <li class="filter-list-item filter-list-item-sort">
       <span>Searching by: </span>
-      <mat-button-toggle-group (change)="onFilterChange($event.value)" name="filter" aria-label="Search filter">
+      <mat-button-toggle-group
+        (change)="onFilterChange($event.value)"
+        aria-label="Search filter"
+        name="filter"
+      >
         <mat-button-toggle value="date">date</mat-button-toggle>
         <mat-button-toggle value="count_of_views">count of views</mat-button-toggle>
       </mat-button-toggle-group>
     </li>
     <li class="filter-list-item" style="text-align: right">
-      <mat-button-toggle-group *ngIf="selectedFilter" value="ascending" (change)="onFilterOrderChange($event.value)" name="filterOrder" aria-label="Search filter order">
+      <mat-button-toggle-group
+        (change)="onFilterOrderChange($event.value)"
+        *ngIf="selectedFilter"
+        aria-label="Search filter order"
+        name="filterOrder"
+        value="ascending"
+      >
         <mat-button-toggle value="ascending">ascending</mat-button-toggle>
         <mat-button-toggle value="descending">descending</mat-button-toggle>
       </mat-button-toggle-group>
     </li>
     <li class="filter-list-item">
       <span>by word or sentence: </span>
-      <input class="filter-string-input" #filterStringInput (change)="onFilterStringChange(filterStringInput.value)" matInput>
+      <input
+        #filterStringInput
+        (change)="onFilterStringChange(filterStringInput.value)"
+        class="filter-string-input"
+        matInput
+      />
     </li>
   </ul>
 </div>
