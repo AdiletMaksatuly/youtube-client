@@ -22,26 +22,31 @@ export class DateHighlightDirective implements OnInit {
   ngOnInit(): void {
     if (!this.appDateHighlight) return;
 
-    this.changeBorder(new Date(this.appDateHighlight));
+    const date = new Date(this.appDateHighlight);
+    this.changeBorder(date);
   }
 
   constructor(private el: ElementRef) {}
 
   changeBorder(videoDate: Date): void {
-    const todayDateMs = +(new Date());
+    const todayDateMs = +new Date();
     const videoDateMs = +videoDate;
     const diff = todayDateMs - videoDateMs;
 
     let color: COLORS;
 
-    if (diff > DATES.SIX_MONTHS) {
-      color = COLORS.MORE_THAN_SIX_MONTHS;
-    } else if (diff > DATES.ONE_MONTH) {
-      color = COLORS.MORE_THAN_MONTH;
-    } else if (diff > DATES.SEVEN_DAYS) {
-      color = COLORS.MORE_THAN_SEVEN_DAYS;
-    } else {
-      color = COLORS.LESS_THAN_SEVEN_DAYS;
+    switch (true) {
+      case diff > DATES.SIX_MONTHS:
+        color = COLORS.MORE_THAN_SIX_MONTHS;
+        break;
+      case diff > DATES.ONE_MONTH:
+        color = COLORS.MORE_THAN_MONTH;
+        break;
+      case diff > DATES.SEVEN_DAYS:
+        color = COLORS.MORE_THAN_SEVEN_DAYS;
+        break;
+      default:
+        color = COLORS.LESS_THAN_SEVEN_DAYS;
     }
 
     this.el.nativeElement.style.borderColor = color;
