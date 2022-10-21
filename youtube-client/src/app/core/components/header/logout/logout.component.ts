@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class LogoutComponent {
   constructor(private router: Router, private loginService: LoginService) {}
 
-  logout() {
+  logout(): void {
     this.loginService.logoutUser();
     this.router.navigate(['login']);
   }

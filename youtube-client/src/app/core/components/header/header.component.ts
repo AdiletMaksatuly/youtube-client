@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FilterType } from '../../../app.model';
 import { SearchService } from '../../services/search.service';
 import { NavigationEnd, Router } from '@angular/router';
+import { FilterType } from '../../models/filter.model';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private youtubeService: SearchService, private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (!(event instanceof NavigationEnd)) return;
 
@@ -23,15 +23,15 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  onSearch(searchQuery: string) {
+  onSearch(searchQuery: string): void {
     this.youtubeService.setSearchQuery(searchQuery);
   }
 
-  onFilter(filterQuery: FilterType) {
+  onFilter(filterQuery: FilterType): void {
     this.youtubeService.setFilterQuery(filterQuery);
   }
 
-  onFilteredByString(filterString: string) {
+  onFilteredByString(filterString: string): void {
     this.youtubeService.setFilterString(filterString);
   }
 }

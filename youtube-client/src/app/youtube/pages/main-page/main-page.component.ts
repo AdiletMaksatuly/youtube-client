@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FilterType } from '../../../app.model';
 import { SearchService } from '../../../core/services/search.service';
+import { FilterType } from '../../../core/models/filter.model';
 
 @Component({
   selector: 'app-main-page',
@@ -22,21 +22,21 @@ export class MainPageComponent implements OnInit {
     this.getFilterString();
   }
 
-  getSearchQuery() {
+  getSearchQuery(): void {
     this.youtubeService.getSearchQuery().subscribe((searchQuery) => {
       this.searchQuery = searchQuery;
       return this.searchQuery;
     });
   }
 
-  getFilterQuery() {
+  getFilterQuery(): void {
     this.youtubeService.getFilterQuery().subscribe((filterQuery) => {
       this.filterQuery = filterQuery;
       return this.filterQuery;
     });
   }
 
-  getFilterString() {
+  getFilterString(): void {
     this.youtubeService.getFilterString().subscribe((filterString) => {
       this.filterString = filterString;
       return this.filterString;

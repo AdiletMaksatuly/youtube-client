@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Statistics } from '../search/search-item.model';
+import { VideoStatistics } from '../../models/video.model';
 
 @Component({
   selector: 'app-video-stats',
@@ -7,7 +7,7 @@ import { Statistics } from '../search/search-item.model';
   styleUrls: ['./video-stats.component.scss'],
 })
 export class VideoStatsComponent {
-  @Input() stats: Omit<Statistics, 'favoriteCount'> = {
+  @Input() stats: Omit<VideoStatistics, 'favoriteCount'> = {
     viewCount: '',
     likeCount: '',
     commentCount: '',

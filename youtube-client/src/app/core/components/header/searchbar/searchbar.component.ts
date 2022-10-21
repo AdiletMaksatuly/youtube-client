@@ -10,7 +10,7 @@ export class SearchbarComponent {
 
   searchQuery: string = '';
 
-  onSearch() {
+  onSearch(): void {
     this.searched.emit(this.searchQuery.toLowerCase());
   }
 }

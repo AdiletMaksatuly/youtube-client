@@ -19,7 +19,7 @@ export class LoginFormComponent {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.loginForm.invalid) return;
 
     this.submitted.emit(this.loginForm.value as LoginFormValues);

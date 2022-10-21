@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FilterType } from '../../../app.model';
+import { FilterType } from '../../../core/models/filter.model';
 
 @Component({
   selector: 'app-search',

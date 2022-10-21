@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Video } from '../components/search/search-item.model';
+import { Video } from '../models/video.model';
 
 @Pipe({
   name: 'searchFilter',
   pure: false,
 })
 export class SearchFilterPipe implements PipeTransform {
-  transform(dataToFilter: Video[], searchQuery: string, filterQuery: string) {
+  transform(dataToFilter: Video[], searchQuery: string, filterQuery: string): Video[] | null {
     if (!dataToFilter) return null;
 
     // if neither searchQuery nor filterQuery weren't provided;
@@ -28,7 +28,7 @@ export class SearchFilterPipe implements PipeTransform {
     return this.filterByString(dataToFilter, filterQuery);
   }
 
-  filterByString(dataToFilter: Video[], string: string) {
+  filterByString(dataToFilter: Video[], string: string): Video[] {
     return dataToFilter.filter((data) => {
       return data.snippet.title.toLowerCase().includes(string);
     });

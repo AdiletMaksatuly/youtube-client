@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Video } from '../../components/search/search-item.model';
 import { YoutubeService } from '../../services/youtube.service';
+import { Video } from '../../models/video.model';
 
 @Component({
   selector: 'app-detailed-information-page',
@@ -24,18 +24,18 @@ export class DetailedInformationPageComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getVideo();
   }
 
-  getVideo() {
+  getVideo(): void {
     const gotVideo = this.youtubeService.getVideo(this.id || '');
     gotVideo?.subscribe((video) => {
       this.video = video;
     });
   }
 
-  goBack() {
+  goBack(): void {
     this.location.back();
   }
 }

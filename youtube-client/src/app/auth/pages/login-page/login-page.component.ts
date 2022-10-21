@@ -11,7 +11,7 @@ import { LoginFormValues } from '../../models/auth.model';
 export class LoginPageComponent {
   constructor(private loginService: LoginService, private router: Router) {}
 
-  onLogin({ username }: LoginFormValues) {
+  onLogin({ username }: LoginFormValues): void {
     this.loginService.loginUser(username);
     this.router.navigate([this.loginService.redirectUrl || 'main']);
   }

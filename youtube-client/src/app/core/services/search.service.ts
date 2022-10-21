@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FilterType } from '../../app.model';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { FilterType } from '../models/filter.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,23 +16,23 @@ export class SearchService {
     return this.searchQuery.asObservable();
   }
 
-  setSearchQuery(value: string) {
+  setSearchQuery(value: string): void {
     this.searchQuery.next(value);
   }
 
-  getFilterQuery() {
+  getFilterQuery(): Observable<FilterType> {
     return this.filterQuery.asObservable();
   }
 
-  setFilterQuery(value: FilterType) {
+  setFilterQuery(value: FilterType): void {
     this.filterQuery.next(value);
   }
 
-  getFilterString() {
+  getFilterString(): Observable<string> {
     return this.filterString.asObservable();
   }
 
-  setFilterString(value: string) {
+  setFilterString(value: string): void {
     this.filterString.next(value);
   }
 }

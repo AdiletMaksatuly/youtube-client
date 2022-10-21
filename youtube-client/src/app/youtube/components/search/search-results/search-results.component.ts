@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Video } from '../search-item.model';
-import { FilterOrder, FilterType } from '../../../../app.model';
 import { YoutubeService } from '../../../services/youtube.service';
+import { Video } from '../../../models/video.model';
+import { FilterOrder, FilterType } from '../../../../core/models/filter.model';
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
@@ -18,11 +18,11 @@ export class SearchResultsComponent implements OnChanges, OnInit {
 
   constructor(private youtubeService: YoutubeService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getVideos();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     // if searchQuery is the prop that triggered event, then do not sort
     if (changes['searchQuery']) return;
 
@@ -33,7 +33,7 @@ export class SearchResultsComponent implements OnChanges, OnInit {
     this.youtubeService.getVideos().subscribe((videos) => (this.videos = videos));
   }
 
-  doSort(videosToSort: Video[]) {
+  doSort(videosToSort: Video[]): void {
     if (this.filterQuery?.date) {
       this.sortByDate(videosToSort, this.filterQuery.date);
     }
@@ -42,7 +42,7 @@ export class SearchResultsComponent implements OnChanges, OnInit {
     }
   }
 
-  sortByDate(videosToSort: Video[], filterOrder: FilterOrder) {
+  sortByDate(videosToSort: Video[], filterOrder: FilterOrder): void {
     this.videos = videosToSort.sort((videoA, videoB) => {
       const videoADate = new Date(videoA.snippet.publishedAt);
       const videoBDate = new Date(videoB.snippet.publishedAt);
@@ -53,7 +53,7 @@ export class SearchResultsComponent implements OnChanges, OnInit {
     });
   }
 
-  sortByCountOfViews(videosToSort: Video[], filterOrder: FilterOrder) {
+  sortByCountOfViews(videosToSort: Video[], filterOrder: FilterOrder): void {
     this.videos = videosToSort.sort((videoA, videoB) => {
       const videoAViews = videoA.statistics.viewCount;
       const videoBViews = videoB.statistics.viewCount;
