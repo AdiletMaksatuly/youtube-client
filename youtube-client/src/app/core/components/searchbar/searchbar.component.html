@@ -1,6 +1,5 @@
-<form class="searchbar" (ngSubmit)="onSearch()">
+<form class="searchbar">
   <mat-form-field class="search-input" appearance="standard" floatLabel="never">
-    <input [(ngModel)]="searchQuery" name="search_query" matInput placeholder="What are you want to find out?">
+    <input [(ngModel)]="searchQuery" (ngModelChange)="onChange()" name="search_query" matInput placeholder="What are you want to find out?">
   </mat-form-field>
-  <button mat-raised-button color="primary" type="submit">Search</button>
 </form>
