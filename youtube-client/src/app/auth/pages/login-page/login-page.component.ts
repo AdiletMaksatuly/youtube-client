@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
-import { Router } from '@angular/router';
 import { LoginFormValues } from '../../models/auth.model';
 
 @Component({
@@ -9,10 +8,9 @@ import { LoginFormValues } from '../../models/auth.model';
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent {
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService) {}
 
   onLogin({ username }: LoginFormValues): void {
     this.loginService.loginUser(username);
-    this.router.navigate([this.loginService.redirectUrl || 'main']);
   }
 }
