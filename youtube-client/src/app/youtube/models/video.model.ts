@@ -7,7 +7,7 @@ export interface Video {
 }
 
 export enum VideoKind {
-  YoutubeVideo = 'youtube#video',
+  YOUTUBE_VIDEO = 'youtube#video',
 }
 
 export interface VideoSnippet {
@@ -26,13 +26,13 @@ export interface VideoSnippet {
 }
 
 export enum VideoDefaultLanguage {
-  En = 'en',
-  EnUS = 'en-US',
-  Ru = 'ru',
+  EN = 'en',
+  EN_US = 'en-US',
+  RU = 'ru',
 }
 
 export enum VideoLiveBroadcastContent {
-  None = 'none',
+  NONE = 'none',
 }
 
 export interface VideoLocalized {

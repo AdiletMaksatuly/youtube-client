@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { FilterType } from '../../models/filter.model';
+import { YoutubeRoutePaths } from '../../../youtube/models/routes.model';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (!(event instanceof NavigationEnd)) return;
 
-      this.isMainPage = event.urlAfterRedirects.includes('main');
+      this.isMainPage = event.urlAfterRedirects.includes(YoutubeRoutePaths.MAIN_PAGE);
     });
   }
 
