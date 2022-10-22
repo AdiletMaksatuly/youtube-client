@@ -1,13 +1,18 @@
 <article class="video-details">
   <div class="video-image">
-    <img width="{{video.snippet.thumbnails.high.width}}" height="{{video.snippet.thumbnails.high.height}}" src="{{video.snippet.thumbnails.high.url}}" alt="">
+    <img
+      width="{{ video.snippet.thumbnails.high.width }}"
+      height="{{ video.snippet.thumbnails.high.height }}"
+      src="{{ video.snippet.thumbnails.high.url }}"
+      alt=""
+    />
   </div>
   <mat-card class="video-info">
-    <mat-card-title>{{video.snippet.title}}</mat-card-title>
-    <mat-card-subtitle>{{video.snippet.publishedAt | date : "fullDate"}}</mat-card-subtitle>
+    <mat-card-title>{{ video.snippet.title }}</mat-card-title>
+    <mat-card-subtitle>{{ video.snippet.publishedAt | date: 'fullDate' }}</mat-card-subtitle>
     <mat-card-content class="video-info-content">
       <strong>Description:</strong>
-      <p>{{video.snippet.description}}</p>
+      <p>{{ video.snippet.description }}</p>
     </mat-card-content>
     <mat-card-footer>
       <app-video-stats [isCentered]="true" [stats]="video.statistics"></app-video-stats>
