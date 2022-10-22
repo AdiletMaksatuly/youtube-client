@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (!(event instanceof NavigationEnd)) return;
 
-      this.isMainPage = event.url.includes('main');
+      this.isMainPage = event.urlAfterRedirects.includes('main');
     });
   }
 
