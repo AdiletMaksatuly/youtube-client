@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { YoutubeService } from '../../services/youtube.service';
 import { Video } from '../../models/video.model';
+import { YoutubeRouteParams } from '../../models/routes.model';
 
 @Component({
   selector: 'app-detailed-information-page',
@@ -20,7 +21,7 @@ export class DetailedInformationPageComponent implements OnInit {
     private location: Location,
   ) {
     this.route.paramMap.subscribe((value: ParamMap) => {
-      this.id = value.get('id');
+      this.id = value.get(YoutubeRouteParams.ID);
     });
   }
 
