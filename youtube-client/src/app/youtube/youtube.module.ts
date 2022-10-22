@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './components/search/search.component';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { SearchResultsComponent } from './components/search/search-results/search-results.component';
 import { SearchItemComponent } from './components/search/search-item/search-item.component';
 import { DateHighlightDirective } from './directives/date-highlight.directive';
@@ -14,6 +10,7 @@ import { DetailedInformationPageComponent } from './pages/detailed-information-p
 import { YoutubeRoutingModule } from './youtube-routing.module';
 import { VideoDetailsComponent } from './components/video-details/video-details.component';
 import { VideoStatsComponent } from './components/video-stats/video-stats.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,14 +25,7 @@ import { VideoStatsComponent } from './components/video-stats/video-stats.compon
     VideoDetailsComponent,
     VideoStatsComponent,
   ],
-  imports: [
-    CommonModule,
-    YoutubeRoutingModule,
-    MatGridListModule,
-    MatCardModule,
-    MatIconModule,
-    MatButtonModule,
-  ],
+  imports: [CommonModule, SharedModule, YoutubeRoutingModule],
   exports: [],
 })
 export class YoutubeModule {}
