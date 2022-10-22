@@ -14,20 +14,34 @@ export class LoginService {
     const user: IUser = { username, token: this.generateToken() };
     localStorage.setItem('user', JSON.stringify(user));
 
-    this.router.navigate([this.redirectUrl || 'main']);
+    this.redirectToMainPage();
   }
 
   logoutUser(): void {
     localStorage.removeItem('user');
 
+    this.redirectToLoginPage();
+  }
+
+  redirectToMainPage(): void {
+    this.router.navigate([this.redirectUrl || 'main']);
+  }
+
+  redirectToLoginPage(): void {
     this.router.navigate(['login']);
   }
 
-  generateToken(): string {
-    return '_' + Math.random().toString(36).substring(2, 9);
+  redirectFromNotFoundPage(): void {
+    if (this.isLoggedIn()) return this.redirectToMainPage();
+
+    this.redirectToLoginPage();
   }
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('user');
+  }
+
+  generateToken(): string {
+    return '_' + Math.random().toString(36).substring(2, 9);
   }
 }
