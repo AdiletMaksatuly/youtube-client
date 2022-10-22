@@ -10,7 +10,7 @@ const routes: Routes = [
     component: MainPageComponent,
   },
   {
-    path: `${YoutubeRoutePaths.DETAILED_INFORMATION_PAGE}/${YoutubeRouteParams.ID}:`,
+    path: `${YoutubeRoutePaths.DETAILED_INFORMATION_PAGE}/:${YoutubeRouteParams.ID}`,
     component: DetailedInformationPageComponent,
   },
 ];
