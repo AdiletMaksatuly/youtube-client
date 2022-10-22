@@ -8,7 +8,7 @@ import { LoginFormValues } from '../../models/auth.model';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-  @Output() submitted = new EventEmitter();
+  @Output() submitted = new EventEmitter<LoginFormValues>();
 
   loginForm = this.formBuilder.group({
     username: ['', [Validators.required]],
