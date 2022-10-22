@@ -14,10 +14,7 @@ import { AuthRoutePaths } from '../models/routes.model';
 })
 export class LoginGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree {
-    const fullURL = route.url.map((segment) => segment.path).join('/');
-
-    console.log(route);
-    return this.checkLogin(fullURL);
+    return this.checkLogin(state.url);
   }
 
   constructor(private loginService: LoginService, private router: Router) {}
