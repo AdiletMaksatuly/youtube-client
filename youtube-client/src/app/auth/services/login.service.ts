@@ -9,9 +9,7 @@ import { YoutubeRoutePaths } from '../../youtube/models/routes.model';
 })
 export class LoginService {
   redirectUrl: string | null = null;
-
   private LoginPageRoute = AuthRoutePaths.LOGIN;
-
   private MainPageRoute = YoutubeRoutePaths.MAIN_PAGE;
 
   constructor(private router: Router) {}
