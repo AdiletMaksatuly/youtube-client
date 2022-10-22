@@ -2,13 +2,15 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { YoutubeService } from '../../../services/youtube.service';
 import { Video } from '../../../models/video.model';
 import { FilterOrder, FilterType } from '../../../../core/models/filter.model';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss'],
 })
 export class SearchResultsComponent implements OnChanges, OnInit {
-  @Input() searchQuery: string = '';
+  @Input() searchQuery$: Observable<string>;
 
   @Input() filterQuery: FilterType = null;
 
@@ -16,21 +18,23 @@ export class SearchResultsComponent implements OnChanges, OnInit {
 
   videos: Video[] = [];
 
-  constructor(private youtubeService: YoutubeService) {}
+  constructor(public youtubeService: YoutubeService) {}
 
   ngOnInit(): void {
-    this.getVideos();
+    this.searchQuery$.subscribe((newSearchQuery) => this.getVideos(newSearchQuery));
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     // if searchQuery is the prop that triggered event, then do not sort
     if (changes['searchQuery']) return;
 
-    this.doSort(this.videos);
+    this.doSort([...this.videos]);
   }
 
-  getVideos(): void {
-    this.youtubeService.getVideos().subscribe((videos) => (this.videos = videos));
+  getVideos(searchQuery: string): void {
+    this.youtubeService.getVideos(searchQuery).subscribe((videos) => {
+      this.videos = videos;
+    });
   }
 
   doSort(videosToSort: Video[]): void {

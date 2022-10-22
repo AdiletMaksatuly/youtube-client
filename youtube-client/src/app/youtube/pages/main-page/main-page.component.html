@@ -1,6 +1,6 @@
 <app-search
   *ngIf="(searchQuery$ | async) !== null"
-  [searchQuery]="searchQuery$ | async"
+  [searchQuery$]="searchQuery$"
   [filterQuery]="filterQuery$ | async"
   [filterString]="filterString$ | async"
 ></app-search>
