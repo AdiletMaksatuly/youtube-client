@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, filter, Observable } from 'rxjs';
 import { FilterType } from '../models/filter.model';
 
 @Injectable({
@@ -13,7 +13,10 @@ export class SearchService {
   filterString = new BehaviorSubject('');
 
   getSearchQuery(): Observable<string | null> {
-    return this.searchQuery.asObservable();
+    return this.searchQuery.pipe(
+      filter((value) => value?.length >= 3),
+      distinctUntilChanged(),
+    );
   }
 
   setSearchQuery(value: string): void {
@@ -21,7 +24,7 @@ export class SearchService {
   }
 
   getFilterQuery(): Observable<FilterType> {
-    return this.filterQuery.asObservable();
+    return this.filterQuery;
   }
 
   setFilterQuery(value: FilterType): void {
@@ -29,7 +32,7 @@ export class SearchService {
   }
 
   getFilterString(): Observable<string> {
-    return this.filterString.asObservable();
+    return this.filterString;
   }
 
   setFilterString(value: string): void {
