@@ -9,11 +9,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent {
-  searchQuery$: Observable<string | null> = this.youtubeService.getSearchQuery();
+  searchQuery$: Observable<string | null> = this.searchService.getSearchQuery();
 
-  filterQuery$: Observable<FilterType> = this.youtubeService.getFilterQuery();
+  filterQuery$: Observable<FilterType> = this.searchService.getFilterQuery();
 
-  filterString$: Observable<string> = this.youtubeService.getFilterString();
+  filterString$: Observable<string> = this.searchService.getFilterString();
 
-  constructor(private youtubeService: SearchService) {}
+  constructor(private searchService: SearchService) {}
 }

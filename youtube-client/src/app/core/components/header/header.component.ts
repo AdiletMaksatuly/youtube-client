@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   isMainPage: boolean = false;
 
-  constructor(private youtubeService: SearchService, private router: Router) {}
+  constructor(private searchService: SearchService, private router: Router) {}
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
@@ -25,14 +25,14 @@ export class HeaderComponent implements OnInit {
   }
 
   onSearch(searchQuery: string): void {
-    this.youtubeService.setSearchQuery(searchQuery);
+    this.searchService.setSearchQuery(searchQuery);
   }
 
   onFilter(filterQuery: FilterType): void {
-    this.youtubeService.setFilterQuery(filterQuery);
+    this.searchService.setFilterQuery(filterQuery);
   }
 
   onFilteredByString(filterString: string): void {
-    this.youtubeService.setFilterString(filterString);
+    this.searchService.setFilterString(filterString);
   }
 }
