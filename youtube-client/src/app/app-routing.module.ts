@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: YoutubeRoutePaths.MAIN_PAGE,
     loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
-    canLoad: [LoginGuard],
+    canActivate: [LoginGuard],
   },
   {
     path: '',

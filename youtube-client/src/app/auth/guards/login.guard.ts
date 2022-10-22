@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { AuthRoutePaths } from '../models/routes.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LoginGuard implements CanLoad {
-  canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree {
-    const fullURL = segments.map((segment) => segment.path).join('/');
+export class LoginGuard implements CanActivate {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree {
+    const fullURL = route.url.map((segment) => segment.path).join('/');
 
+    console.log(route);
     return this.checkLogin(fullURL);
   }
 
@@ -21,6 +29,6 @@ export class LoginGuard implements CanLoad {
 
     this.loginService.redirectUrl = url;
 
-    return this.router.parseUrl('/login');
+    return this.router.parseUrl(AuthRoutePaths.LOGIN);
   }
 }
