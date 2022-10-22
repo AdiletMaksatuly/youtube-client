@@ -1,0 +1,17 @@
+<main>
+  <section>
+    <div class="container">
+      <button
+        (click)="goBack()"
+        class="back-btn"
+        mat-raised-button
+        color="primary"
+        aria-label="Back to previous page"
+      >
+        <mat-icon>arrow_back</mat-icon>
+        Back
+      </button>
+      <app-video-details [video]="video"> </app-video-details>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,16 @@
+.video-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.video-stats-center {
+  justify-content: center;
+}
+
+.video-stats-item {
+  display: flex;
+  align-items: center;
+}
+

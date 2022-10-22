@@ -1,0 +1,21 @@
+.video-details {
+  display: flex;
+}
+
+.video-image {
+  flex-basis: 50%;
+}
+
+.video-image img {
+  width: 100%;
+  height: auto;
+}
+.video-info {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+.video-info-content {
+  flex-grow: 1;
+}

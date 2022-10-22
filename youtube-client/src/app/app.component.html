@@ -1,11 +1,2 @@
-<app-header
-  (searched)="showSearchResults($event)"
-  (filtered)="applyFilter($event)"
-  (filteredByString)="setFilterString($event)"
-></app-header>
-<app-search
-  *ngIf="searchQuery !== null"
-  [searchQuery]="searchQuery"
-  [filterQuery]="filterQuery"
-  [filterString]="filterString"
-></app-search>
+<app-header></app-header>
+<router-outlet></router-outlet>
