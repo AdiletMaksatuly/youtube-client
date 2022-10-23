@@ -3,6 +3,7 @@ import { IUser } from '../models/auth.model';
 import { Router } from '@angular/router';
 import { AuthRoutePaths } from '../models/routes.model';
 import { YoutubeRoutePaths } from '../../youtube/models/routes.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,17 +15,21 @@ export class LoginService {
 
   private MainPageRoute = YoutubeRoutePaths.MAIN_PAGE;
 
+  isLoggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('user'));
+
   constructor(private router: Router) {}
 
   loginUser(username: string): void {
     const user: IUser = { username, token: this.generateToken() };
     localStorage.setItem('user', JSON.stringify(user));
+    this.isLoggedIn.next(true);
 
     this.redirectToMainPage();
   }
 
   logoutUser(): void {
     localStorage.removeItem('user');
+    this.isLoggedIn.next(false);
 
     this.redirectToLoginPage();
   }
@@ -38,13 +43,9 @@ export class LoginService {
   }
 
   redirectFromNotFoundPage(): void {
-    if (this.isLoggedIn()) return this.redirectToMainPage();
+    if (this.isLoggedIn) return this.redirectToMainPage();
 
     this.redirectToLoginPage();
-  }
-
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('user');
   }
 
   generateToken(): string {

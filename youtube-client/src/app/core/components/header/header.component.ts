@@ -1,28 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SearchService } from '../../services/search.service';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { FilterType } from '../../models/filter.model';
-import { YoutubeRoutePaths } from '../../../youtube/models/routes.model';
+import { LoginService } from '../../../auth/services/login.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   showFilter: boolean = false;
 
-  isMainPage: boolean = false;
+  isLoggedIn: Observable<boolean> = this.loginService.isLoggedIn;
 
-  constructor(private searchService: SearchService, private router: Router) {}
-
-  ngOnInit(): void {
-    this.router.events.subscribe((event) => {
-      if (!(event instanceof NavigationEnd)) return;
-
-      this.isMainPage = event.urlAfterRedirects.includes(YoutubeRoutePaths.MAIN_PAGE);
-    });
-  }
+  constructor(
+    private searchService: SearchService,
+    private router: Router,
+    private loginService: LoginService,
+  ) {}
 
   onSearch(searchQuery: string): void {
     this.searchService.setSearchQuery(searchQuery);

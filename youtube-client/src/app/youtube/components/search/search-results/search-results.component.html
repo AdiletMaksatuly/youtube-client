@@ -5,4 +5,7 @@
   <div *ngIf="videos.length === 0">
     <h1>Not found!</h1>
   </div>
+  <div *ngIf="error">
+    Error occured {{error | json}}
+  </div>
 </ul>

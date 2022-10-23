@@ -11,7 +11,10 @@
         <mat-icon>arrow_back</mat-icon>
         Back
       </button>
-      <app-video-details [video]="video"> </app-video-details>
+      <app-video-details *ngIf="video$ | async" [video]="video$ | async"> </app-video-details>
+      <div *ngIf="error">
+        Error occured: {{error | json}}
+      </div>
     </div>
   </section>
 </main>

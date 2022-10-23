@@ -7,5 +7,5 @@ import { Video } from '../../models/video.model';
   styleUrls: ['./video-details.component.scss'],
 })
 export class VideoDetailsComponent {
-  @Input() video: Video = {} as Video;
+  @Input() video: Video;
 }

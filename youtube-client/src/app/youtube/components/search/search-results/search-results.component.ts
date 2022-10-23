@@ -18,6 +18,8 @@ export class SearchResultsComponent implements OnChanges, OnInit {
 
   videos: Video[] = [];
 
+  public error: Error | null;
+
   constructor(public youtubeService: YoutubeService) {}
 
   ngOnInit(): void {
@@ -32,8 +34,14 @@ export class SearchResultsComponent implements OnChanges, OnInit {
   }
 
   getVideos(searchQuery: string): void {
-    this.youtubeService.getVideos(searchQuery).subscribe((videos) => {
-      this.videos = videos;
+    this.youtubeService.getVideos(searchQuery).subscribe((value) => {
+      // if new value came but there is an error from previous request
+      if (this.error !== null) this.error = null;
+
+      console.log(value)
+      if (value instanceof Error) return (this.error = value);
+
+      return (this.videos = value);
     });
   }
 

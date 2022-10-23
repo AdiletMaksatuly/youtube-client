@@ -2,11 +2,11 @@
   padding: 20px 0;
 }
 
-.header-login, .header-logout {
+.header-profile, .header-login, .header-logout {
   flex: 1;
 }
 
-.header-logout {
+.header-logout, .header-login {
   text-align: right;
 }
 
