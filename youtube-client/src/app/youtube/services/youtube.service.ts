@@ -2,29 +2,28 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable, switchMap, throwError } from 'rxjs';
 import { SearchListResponse, Video, VideosListResponse } from '../models/video.model';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { API_KEY } from '../api-key.constant';
+import { URLs } from '../models/api.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class YoutubeService {
-  private SEARCH_URL = `https://youtube.googleapis.com/youtbube/v3/search`;
+  private SEARCH_LIST_URL = URLs.SEARCH_LIST;
 
-  private VIDEOS_URL = 'https://www.googleapis.com/youtube/v3/videos';
+  private VIDEOS_LIST_URL = URLs.VIDEOS_LIST;
 
   constructor(private http: HttpClient) {}
 
   getVideoIDs(searchQuery: string): Observable<string> {
     const params = new HttpParams()
-      .set('key', API_KEY)
       .set('type', 'video')
       .set('maxResults', 10)
       .set('q', searchQuery);
 
-    return this.http.get<SearchListResponse>(this.SEARCH_URL, { params }).pipe(
+    return this.http.get<SearchListResponse>(this.SEARCH_LIST_URL, { params }).pipe(
       map((response) => {
         return response?.items.map((video) => video.id.videoId).join(',');
-      })
+      }),
     );
   }
 
@@ -32,12 +31,13 @@ export class YoutubeService {
     return this.getVideoIDs(searchQuery)
       .pipe(
         switchMap((IDs) => {
-          const params = new HttpParams()
-            .set('key', API_KEY)
+          const videosListParams = new HttpParams()
             .set('part', 'snippet,statistics')
             .set('id', IDs);
 
-          return this.http.get<VideosListResponse>(this.VIDEOS_URL, { params });
+          return this.http.get<VideosListResponse>(this.VIDEOS_LIST_URL, {
+            params: videosListParams,
+          });
         }),
       )
       .pipe(
@@ -47,12 +47,9 @@ export class YoutubeService {
   }
 
   getVideo(id: string): Observable<Video | Error> | null {
-    const params = new HttpParams()
-      .set('key', API_KEY)
-      .set('part', 'snippet,statistics')
-      .set('id', id);
+    const params = new HttpParams().set('part', 'snippet,statistics').set('id', id);
 
-    return this.http.get<VideosListResponse>(this.VIDEOS_URL, { params }).pipe(
+    return this.http.get<VideosListResponse>(this.VIDEOS_LIST_URL, { params }).pipe(
       map((response) => response.items[0]),
       catchError(this.handleError),
     );

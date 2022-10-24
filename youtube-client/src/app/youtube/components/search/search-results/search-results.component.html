@@ -2,10 +2,10 @@
   <li class="search-results-item" *ngFor="let video of videos | searchFilter: (searchQuery$ | async) : filterString">
     <app-search-item [video]="video"></app-search-item>
   </li>
-  <div *ngIf="videos.length === 0">
+  <div *ngIf="isNotFound">
     <h1>Not found!</h1>
   </div>
   <div *ngIf="error">
-    Error occured {{error | json}}
+    Error occurred {{error | json}}
   </div>
 </ul>

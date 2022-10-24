@@ -20,6 +20,8 @@ export class SearchResultsComponent implements OnChanges, OnInit {
 
   public error: Error | null;
 
+  isNotFound: boolean;
+
   constructor(public youtubeService: YoutubeService) {}
 
   ngOnInit(): void {
@@ -38,9 +40,9 @@ export class SearchResultsComponent implements OnChanges, OnInit {
       // if new value came but there is an error from previous request
       if (this.error !== null) this.error = null;
 
-      console.log(value)
       if (value instanceof Error) return (this.error = value);
 
+      if (value.length === 0) this.isNotFound = true;
       return (this.videos = value);
     });
   }
