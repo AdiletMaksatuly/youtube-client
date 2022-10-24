@@ -19,8 +19,8 @@ export class LoginService {
 
   constructor(private router: Router) {}
 
-  loginUser(username: string): void {
-    const user: IUser = { username, token: this.generateToken() };
+  loginUser(email: string): void {
+    const user: IUser = { email, token: this.generateToken() };
     localStorage.setItem('user', JSON.stringify(user));
     this.isLoggedIn.next(true);
 
