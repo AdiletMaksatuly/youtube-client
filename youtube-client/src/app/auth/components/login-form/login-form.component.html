@@ -2,13 +2,13 @@
   <h1>Login</h1>
   <mat-form-field class="login-form-field" appearance="fill">
     <mat-label>Login email</mat-label>
-    <input matInput placeholder="Login email" formControlName="email"/>
+    <input matInput placeholder="Login email" formControlName="email" />
     <mat-error *ngIf="this.hasEmailError">{{ getEmailErrorMessage() }}</mat-error>
   </mat-form-field>
 
   <mat-form-field class="login-form-field" appearance="fill">
     <mat-label>Password</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"/>
+    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
     <button
       mat-icon-button
       matSuffix

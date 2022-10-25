@@ -1,3 +1,13 @@
+export interface IUser {
+  email: string;
+  token: string;
+}
+
+export interface LoginFormValues {
+  email: string;
+  password: string;
+}
+
 export enum LoginFormFields {
   EMAIL = 'email',
   PASSWORD = 'password',
@@ -32,12 +42,10 @@ export interface PasswordStrengthErrors {
   hasSpecials?: boolean;
 }
 
-export interface LoginFormValues {
-  email: string;
-  password: string;
-}
-
-export interface IUser {
-  email: string;
-  token: string;
+export interface CreateCardFormValues {
+  title: string;
+  description: string;
+  coverLink: string;
+  videoLink: string;
+  creationDate: string;
 }

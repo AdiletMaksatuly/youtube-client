@@ -11,6 +11,9 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
 import { VideoDetailsComponent } from './components/video-details/video-details.component';
 import { VideoStatsComponent } from './components/video-stats/video-stats.component';
 import { SharedModule } from '../shared/shared.module';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { CreateCardFormComponent } from './components/create-card-form/create-card-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,8 +27,10 @@ import { SharedModule } from '../shared/shared.module';
     DetailedInformationPageComponent,
     VideoDetailsComponent,
     VideoStatsComponent,
+    AdminPageComponent,
+    CreateCardFormComponent,
   ],
-  imports: [CommonModule, SharedModule, YoutubeRoutingModule],
+  imports: [CommonModule, SharedModule, YoutubeRoutingModule, ReactiveFormsModule],
   exports: [],
 })
 export class YoutubeModule {}
