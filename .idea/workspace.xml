@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e8b7df0-bcaa-4043-a248-b16bf862d1eb" name="Changes" comment="update gitignore">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms/assets/images/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/forms/assets/images/logo1.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/forms/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms/main.fa967339b0762f9f.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +85,7 @@
       <workItem from="1665860423484" duration="36000" />
       <workItem from="1666606158974" duration="91000" />
       <workItem from="1666606254316" duration="581000" />
+      <workItem from="1666718597258" duration="309000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add angular material to the project">
       <created>1665079412951</created>
