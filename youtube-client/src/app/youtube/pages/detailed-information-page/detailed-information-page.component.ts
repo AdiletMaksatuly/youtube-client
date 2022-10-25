@@ -14,9 +14,11 @@ import { BehaviorSubject } from 'rxjs';
 export class DetailedInformationPageComponent {
   id: string | null = null;
 
-  video$ = new BehaviorSubject<Video>(null);
+  private videoSubject = new BehaviorSubject<Video>(null);
 
-  public error: Error | null;
+  video$ = this.videoSubject.asObservable();
+
+  error: Error | null;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +33,7 @@ export class DetailedInformationPageComponent {
 
         if (value instanceof Error) return (this.error = value);
 
-        return this.video$.next(value);
+        return this.videoSubject.next(value);
       });
     });
   }

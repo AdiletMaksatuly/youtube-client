@@ -6,11 +6,11 @@ import { FilterType } from '../models/filter.model';
   providedIn: 'root',
 })
 export class SearchService {
-  searchQuery = new BehaviorSubject<string | null>(null);
+  private searchQuery = new BehaviorSubject<string | null>(null);
 
-  filterQuery = new BehaviorSubject<FilterType>(null);
+  private filterQuery = new BehaviorSubject<FilterType>(null);
 
-  filterString = new BehaviorSubject('');
+  private filterString = new BehaviorSubject('');
 
   getSearchQuery(): Observable<string | null> {
     return this.searchQuery.pipe(
@@ -27,7 +27,7 @@ export class SearchService {
   }
 
   getFilterQuery(): Observable<FilterType> {
-    return this.filterQuery;
+    return this.filterQuery.asObservable();
   }
 
   setFilterQuery(value: FilterType): void {
@@ -35,7 +35,7 @@ export class SearchService {
   }
 
   getFilterString(): Observable<string> {
-    return this.filterString;
+    return this.filterString.asObservable();
   }
 
   setFilterString(value: string): void {

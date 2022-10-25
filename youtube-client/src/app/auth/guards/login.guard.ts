@@ -20,7 +20,7 @@ export class LoginGuard implements CanActivate {
   constructor(private loginService: LoginService, private router: Router) {}
 
   checkLogin(url: string): true | UrlTree {
-    const isLoggedIn = this.loginService.isLoggedIn.getValue();
+    const isLoggedIn = this.loginService.getIsLoggedIn();
 
     if (isLoggedIn) return true;
 
