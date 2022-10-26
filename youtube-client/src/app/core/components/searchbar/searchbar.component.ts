@@ -11,6 +11,6 @@ export class SearchbarComponent {
   searchQuery: string = '';
 
   onChange(): void {
-    this.searched.emit(this.searchQuery.toLowerCase().trim());
+    this.searched.emit(this.searchQuery);
   }
 }
