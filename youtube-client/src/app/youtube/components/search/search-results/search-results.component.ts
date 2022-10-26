@@ -1,8 +1,8 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {YoutubeService} from '../../../services/youtube.service';
-import {Video} from '../../../models/video.model';
-import {FilterOrder, FilterType} from '../../../../core/models/filter.model';
-import { map, Observable, switchMap} from 'rxjs';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { YoutubeService } from '../../../services/youtube.service';
+import { Video } from '../../../models/video.model';
+import { FilterOrder, FilterType } from '../../../../core/models/filter.model';
+import { map, Observable, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-search-results',
@@ -16,86 +16,66 @@ export class SearchResultsComponent implements OnChanges, OnInit {
 
   @Input() filterString: string = '';
 
-  // videos: Video[] = [];
-  videos: Observable<Video[]>;
+  videos$: Observable<Video[]>;
 
   public error: Error | null;
 
   isNotFound: boolean;
 
-  constructor(public youtubeService: YoutubeService) {
-  }
+  constructor(public youtubeService: YoutubeService) {}
 
   ngOnInit(): void {
-    this.videos = this.searchQuery$.pipe(
-      switchMap(newSearchQuery => this.getVideos(newSearchQuery)),
-      map(value => {
-        // if new value came but there is an error from previous request
-        if (this.error !== null) this.error = null;
+    this.videos$ = this.searchQuery$.pipe(
+      switchMap((newSearchQuery) => this.youtubeService.getVideos(newSearchQuery)),
+      tap((value) => {
+        if (value.length) return this.isNotFound = false;
 
-        if (value instanceof Error) {
-          this.error = value;
-          return [];
-        }
-
-        if (value.length === 0) {
-          this.isNotFound = true;
-          return [];
-        }
-
-        return value;
-      })
-    )
+        return this.isNotFound = true;
+      }),
+    );
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     // if searchQuery is the prop that triggered event, then do not sort
     if (changes['searchQuery']) return;
 
-    // this.doSort([...this.videos]);
+    this.videos$ = this.videos$?.pipe(
+      map((videos) => {
+        return this.doSort([...videos]);
+      }),
+    );
   }
 
-  getVideos(searchQuery: string): Observable<Video[] | Error> {
-    return this.youtubeService.getVideos(searchQuery);
-    // this.youtubeService.getVideos(searchQuery).subscribe((value) => {
-    //   // if new value came but there is an error from previous request
-    //   if (this.error !== null) this.error = null;
-    //
-    //   if (value instanceof Error) return (this.error = value);
-    //
-    //   if (value.length === 0) this.isNotFound = true;
-    //   return (this.videos = value);
-    // });
-  }
-
-  doSort(videosToSort: Video[]): void {
+  doSort(videosToSort: Video[]): Video[] {
     if (this.filterQuery?.date) {
-      this.sortByDate(videosToSort, this.filterQuery.date);
+      return this.sortByDate(videosToSort, this.filterQuery.date);
     }
     if (this.filterQuery?.countOfViews) {
-      this.sortByCountOfViews(videosToSort, this.filterQuery.countOfViews);
+      return this.sortByCountOfViews(videosToSort, this.filterQuery.countOfViews);
     }
+
+    return videosToSort;
   }
 
-  sortByDate(videosToSort: Video[], filterOrder: FilterOrder): void {
-    // this.videos = videosToSort.sort((videoA, videoB) => {
-    //   const videoADate = new Date(videoA.snippet.publishedAt);
-    //   const videoBDate = new Date(videoB.snippet.publishedAt);
-    //
-    //   // old date's ms is bigger than earlier date's ms, so when ascending, earlier date with less ms must be before old date. so, difference must be B - A.
-    //   // when descending, vice versa
-    //   return filterOrder === 'ascending' ? +videoBDate - +videoADate : +videoADate - +videoBDate;
-    // });
+  sortByDate(videosToSort: Video[], filterOrder: FilterOrder): Video[] {
+    return videosToSort.sort((videoA, videoB) => {
+      const videoADate = new Date(videoA.snippet.publishedAt);
+      const videoBDate = new Date(videoB.snippet.publishedAt);
+
+      // old date's ms is bigger than earlier date's ms, so when ascending, earlier date with less ms must be before old date. so, difference must be B - A.
+      // when descending, vice versa
+      return filterOrder === 'ascending' ? +videoBDate - +videoADate : +videoADate - +videoBDate;
+    });
   }
 
-  sortByCountOfViews(videosToSort: Video[], filterOrder: FilterOrder): void {
-    // this.videos = videosToSort.sort((videoA, videoB) => {
-    //   const videoAViews = videoA.statistics.viewCount;
-    //   const videoBViews = videoB.statistics.viewCount;
-    //
-    //   return filterOrder === 'ascending'
-    //     ? +videoAViews - +videoBViews
-    //     : +videoBViews - +videoAViews;
-    // });
+  sortByCountOfViews(videosToSort: Video[], filterOrder: FilterOrder): Video[] {
+    return videosToSort.sort((videoA, videoB) => {
+      const videoAViews = videoA.statistics.viewCount;
+      const videoBViews = videoB.statistics.viewCount;
+
+      return filterOrder === 'ascending'
+        ? +videoAViews - +videoBViews
+        : +videoBViews - +videoAViews;
+    });
   }
 }
