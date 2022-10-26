@@ -18,8 +18,6 @@ export class SearchResultsComponent implements OnChanges, OnInit {
 
   videos$: Observable<Video[]>;
 
-  public error: Error | null;
-
   isNotFound: boolean;
 
   constructor(public youtubeService: YoutubeService) {}
@@ -28,9 +26,9 @@ export class SearchResultsComponent implements OnChanges, OnInit {
     this.videos$ = this.searchQuery$.pipe(
       switchMap((newSearchQuery) => this.youtubeService.getVideos(newSearchQuery)),
       tap((value) => {
-        if (value.length) return this.isNotFound = false;
+        if (value.length) return (this.isNotFound = false);
 
-        return this.isNotFound = true;
+        return (this.isNotFound = true);
       }),
     );
   }

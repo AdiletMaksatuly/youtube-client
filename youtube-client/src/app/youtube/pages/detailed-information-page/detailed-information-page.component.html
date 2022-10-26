@@ -12,9 +12,6 @@
         Back
       </button>
       <app-video-details *ngIf="(video$ | async) as video" [video]="video"></app-video-details>
-      <div *ngIf="error">
-        Error occured: {{error | json}}
-      </div>
     </div>
   </section>
 </main>
