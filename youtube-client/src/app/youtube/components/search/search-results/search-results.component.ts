@@ -26,9 +26,7 @@ export class SearchResultsComponent implements OnChanges, OnInit {
     this.videos$ = this.searchQuery$.pipe(
       switchMap((newSearchQuery) => this.youtubeService.getVideos(newSearchQuery)),
       tap((value) => {
-        if (value.length) return (this.isNotFound = false);
-
-        return (this.isNotFound = true);
+        this.isNotFound = !value.length;
       }),
     );
   }

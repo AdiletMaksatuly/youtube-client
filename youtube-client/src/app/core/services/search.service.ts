@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, debounceTime, distinctUntilChanged, filter, map, Observable} from 'rxjs';
+import { BehaviorSubject, debounceTime, distinctUntilChanged, filter, map, Observable } from 'rxjs';
 import { FilterType } from '../models/filter.model';
 
 @Injectable({
@@ -15,12 +15,10 @@ export class SearchService {
   getSearchQuery(): Observable<string | null> {
     return this.searchQuery.pipe(
       debounceTime(500),
-      map(searchQuery => {
+      map((searchQuery) => {
         return searchQuery?.toLowerCase().trim();
       }),
-      filter((value) => {
-        return value?.length >= 3;
-      }),
+      filter((value) => value?.length >= 3),
       distinctUntilChanged(),
     );
   }
