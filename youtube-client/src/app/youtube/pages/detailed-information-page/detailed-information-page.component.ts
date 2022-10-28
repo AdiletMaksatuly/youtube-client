@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { YoutubeService } from '../../services/youtube.service';
 import { Video } from '../../models/video.model';
 import { YoutubeRouteParams } from '../../models/routes.model';
+import { Observable, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-detailed-information-page',
@@ -13,27 +14,18 @@ import { YoutubeRouteParams } from '../../models/routes.model';
 export class DetailedInformationPageComponent implements OnInit {
   id: string | null = null;
 
-  video: Video = {} as Video;
+  video$: Observable<Video>;
 
   constructor(
     private route: ActivatedRoute,
     private youtubeService: YoutubeService,
     private location: Location,
-  ) {
-    this.route.paramMap.subscribe((value: ParamMap) => {
-      this.id = value.get(YoutubeRouteParams.ID);
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.getVideo();
-  }
-
-  getVideo(): void {
-    const gotVideo = this.youtubeService.getVideo(this.id || '');
-    gotVideo?.subscribe((video) => {
-      this.video = video;
-    });
+    this.video$ = this.route.paramMap.pipe(
+      switchMap((params) => this.youtubeService.getVideo(params.get(YoutubeRouteParams.ID))),
+    );
   }
 
   goBack(): void {

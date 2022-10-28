@@ -1,5 +1,8 @@
 <ul class="search-results">
-  <li class="search-results-item" *ngFor="let video of videos | searchFilter: searchQuery : filterString">
+  <li class="search-results-item" *ngFor="let video of videos$ | async | searchFilter: (searchQuery$ | async) : filterString">
     <app-search-item [video]="video"></app-search-item>
   </li>
+  <div *ngIf="isNotFound">
+    <h1>Not found!</h1>
+  </div>
 </ul>

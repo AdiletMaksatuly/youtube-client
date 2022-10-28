@@ -1,22 +1,67 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { videos as VIDEOS } from '../mock-videos';
-import { Video } from '../models/video.model';
+import { catchError, map, Observable, switchMap, throwError } from 'rxjs';
+import { SearchListResponse, Video, VideosListResponse } from '../models/video.model';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { URLs } from '../models/api.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class YoutubeService {
-  getVideos(): Observable<Video[]> {
-    return of(VIDEOS);
+  private SEARCH_LIST_URL = URLs.SEARCH_LIST;
+
+  private VIDEOS_LIST_URL = URLs.VIDEOS_LIST;
+
+  constructor(private http: HttpClient) {}
+
+  getVideoIDs(searchQuery: string): Observable<string> {
+    const params = new HttpParams()
+      .set('type', 'video')
+      .set('maxResults', 10)
+      .set('q', searchQuery);
+
+    return this.http.get<SearchListResponse>(this.SEARCH_LIST_URL, { params }).pipe(
+      map((response) => {
+        return response?.items.map((video) => video.id.videoId).join(',');
+      }),
+    );
   }
 
-  getVideo(id: string): Observable<Video> | null {
-    const foundVideo = VIDEOS.find((video) => video.id === id);
-    if (foundVideo) {
-      return of(foundVideo);
-    }
+  getVideos(searchQuery: string): Observable<Video[]> {
+    return this.getVideoIDs(searchQuery)
+      .pipe(
+        switchMap((IDs) => {
+          const videosListParams = new HttpParams()
+            .set('part', 'snippet,statistics')
+            .set('id', IDs);
 
-    return null;
+          return this.http.get<VideosListResponse>(this.VIDEOS_LIST_URL, {
+            params: videosListParams,
+          });
+        }),
+      )
+      .pipe(
+        map((response) => response?.items),
+        catchError(this.handleError<Video[]>),
+      );
+  }
+
+  getVideo(id: string): Observable<Video> {
+    const params = new HttpParams().set('part', 'snippet,statistics').set('id', id);
+
+    return this.http.get<VideosListResponse>(this.VIDEOS_LIST_URL, { params }).pipe(
+      map((response) => response.items[0]),
+      catchError(this.handleError<Video>),
+    );
+  }
+
+  private handleError<T>(error: HttpErrorResponse): Observable<T> {
+    if (error.status === 0) {
+      // A client-side or network error occurred
+      console.error('An error occurred:', error.error);
+    } else {
+      console.error(`Backend returned code ${error.status}, body was: `, error.error);
+    }
+    return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }

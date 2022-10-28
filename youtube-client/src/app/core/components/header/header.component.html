@@ -1,13 +1,15 @@
 <mat-toolbar class="header">
   <mat-toolbar-row class="header-row header-row-search container">
-    <app-login class="header-login"></app-login>
+    <app-login class="header-profile"></app-login>
     <div class="header-center">
       <app-logo></app-logo>
       <app-searchbar (searched)="onSearch($event)" class="header-searchbar"></app-searchbar>
       <app-settings (click)="showFilter = !showFilter"></app-settings>
     </div>
-    <app-logout *ngIf="isMainPage" class="header-logout"></app-logout>
-    <div *ngIf="!isMainPage" style="flex-grow: 1"></div>
+    <app-logout *ngIf="isLoggedIn$" class="header-logout"></app-logout>
+    <div *ngIf="(isLoggedIn$ | async) === false" class="header-login">
+      <button mat-raised-button>Login</button>
+    </div>
   </mat-toolbar-row>
   <mat-toolbar-row *ngIf="showFilter" class="header-row header-row-filter container">
     <app-filter

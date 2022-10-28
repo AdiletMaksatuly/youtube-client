@@ -1,13 +1,30 @@
 export interface Video {
-  kind: VideoKind;
+  kind: ResponseKind.VIDEOS_LIST_VIDEO;
   etag: string;
-  id: string;
+  id: VideosListVideoID;
   snippet: VideoSnippet;
   statistics: VideoStatistics;
 }
 
-export enum VideoKind {
-  YOUTUBE_VIDEO = 'youtube#video',
+export interface SearchListVideo extends Omit<Video, 'kind' | 'id'> {
+  kind: ResponseKind.SEARCH_LIST_VIDEO;
+  id: SearchListVideoID;
+}
+
+export interface SearchListVideoID {
+  kind: ResponseKind.VIDEOS_LIST_VIDEO;
+  videoId: string;
+}
+
+export interface VideosListVideoID {
+  id: string;
+}
+
+export enum ResponseKind {
+  SEARCH_LIST = 'youtube#searchListResponse',
+  SEARCH_LIST_VIDEO = 'youtube#searchResult',
+  VIDEOS_LIST = 'youtube#videoListResponse',
+  VIDEOS_LIST_VIDEO = 'youtube#video',
 }
 
 export interface VideoSnippet {
@@ -67,8 +84,15 @@ export interface PageInfo {
   resultsPerPage: number;
 }
 
-export interface IResponseVideo {
-  kind: string;
+export interface SearchListResponse {
+  kind: ResponseKind.SEARCH_LIST;
+  etag: string;
+  pageInfo: PageInfo;
+  items: SearchListVideo[];
+}
+
+export interface VideosListResponse {
+  kind: ResponseKind.VIDEOS_LIST;
   etag: string;
   pageInfo: PageInfo;
   items: Video[];

@@ -8,27 +8,29 @@ import {
 } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { AuthRoutePaths } from '../models/routes.model';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginGuard implements CanActivate {
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree {
-    const fullURL = route.url.map((segment) => segment.path).join('/');
-
-    console.log(route);
-    return this.checkLogin(fullURL);
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot,
+  ): Observable<boolean | UrlTree> {
+    return this.checkLogin(state.url);
   }
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-  checkLogin(url: string): true | UrlTree {
-    if (this.loginService.isLoggedIn()) {
-      return true;
-    }
+  checkLogin(url: string): Observable<true | UrlTree> {
+    return this.loginService.getIsLoggedIn$().pipe(
+      map((isLoggedIn) => {
+        if (isLoggedIn) return true;
 
-    this.loginService.redirectUrl = url;
-
-    return this.router.parseUrl(AuthRoutePaths.LOGIN);
+        this.loginService.redirectUrl = url;
+        return this.router.parseUrl(AuthRoutePaths.LOGIN);
+      }),
+    );
   }
 }
