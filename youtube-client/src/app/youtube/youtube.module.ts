@@ -11,6 +11,10 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
 import { VideoDetailsComponent } from './components/video-details/video-details.component';
 import { VideoStatsComponent } from './components/video-stats/video-stats.component';
 import { SharedModule } from '../shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { youtubeReducer } from './redux/reducers/youtube.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { YoutubeEffects } from './redux/effects/youtube.effects';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,13 @@ import { SharedModule } from '../shared/shared.module';
     VideoDetailsComponent,
     VideoStatsComponent,
   ],
-  imports: [CommonModule, SharedModule, YoutubeRoutingModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    YoutubeRoutingModule,
+    StoreModule.forFeature('youtube', youtubeReducer),
+    EffectsModule.forFeature([YoutubeEffects]),
+  ],
   exports: [],
 })
 export class YoutubeModule {}
