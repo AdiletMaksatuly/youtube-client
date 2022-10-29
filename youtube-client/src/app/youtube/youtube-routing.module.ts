@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { DetailedInformationPageComponent } from './pages/detailed-information-page/detailed-information-page.component';
 import { YoutubeRouteParams, YoutubeRoutePaths } from './models/routes.model';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: `${YoutubeRoutePaths.DETAILED_INFORMATION_PAGE}/:${YoutubeRouteParams.ID}`,
     component: DetailedInformationPageComponent,
+  },
+  {
+    path: YoutubeRoutePaths.ADMIN_PAGE,
+    component: AdminPageComponent,
   },
 ];
 
