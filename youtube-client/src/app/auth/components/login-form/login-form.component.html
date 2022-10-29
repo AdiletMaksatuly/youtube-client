@@ -3,7 +3,7 @@
   <mat-form-field class="login-form-field" appearance="fill">
     <mat-label>Login email</mat-label>
     <input matInput placeholder="Login email" formControlName="email" />
-    <mat-error *ngIf="this.hasEmailError">{{ getEmailErrorMessage() }}</mat-error>
+    <mat-error *ngIf="hasEmailError">{{ getEmailErrorMessage() }}</mat-error>
   </mat-form-field>
 
   <mat-form-field class="login-form-field" appearance="fill">
@@ -18,7 +18,7 @@
     >
       <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
     </button>
-    <mat-error *ngIf="this.hasPasswordError">{{ getPasswordErrorMessage() }}</mat-error>
+    <mat-error *ngIf="hasPasswordError">{{ getPasswordErrorMessage() }}</mat-error>
   </mat-form-field>
 
   <button mat-flat-button type="submit" color="primary">Submit</button>

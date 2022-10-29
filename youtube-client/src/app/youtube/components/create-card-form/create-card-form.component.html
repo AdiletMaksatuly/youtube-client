@@ -3,20 +3,20 @@
   <mat-form-field class="create-card-form-field" appearance="fill">
     <mat-label>Title</mat-label>
     <input matInput placeholder="Title" formControlName="title" />
-    <mat-error *ngIf="this.createCardForm.get('title').hasError('required')">
+    <mat-error *ngIf="createCardForm.get('title').hasError('required')">
       Please enter a title
     </mat-error>
-    <mat-error *ngIf="this.createCardForm.get('title').hasError('minlength')">
+    <mat-error *ngIf="createCardForm.get('title').hasError('minlength')">
       The title is too short
     </mat-error>
-    <mat-error *ngIf="this.createCardForm.get('title').hasError('maxlength')">
+    <mat-error *ngIf="createCardForm.get('title').hasError('maxlength')">
       The title is too long
     </mat-error>
   </mat-form-field>
   <mat-form-field class="create-card-form-field" appearance="fill">
     <mat-label>Description</mat-label>
     <input matInput placeholder="Description" formControlName="description" />
-    <mat-error *ngIf="this.createCardForm.get('description').hasError('maxlength')"
+    <mat-error *ngIf="createCardForm.get('description').hasError('maxlength')"
       >The description is too long
     </mat-error>
   </mat-form-field>
@@ -24,10 +24,10 @@
   <mat-form-field class="create-card-form-field" appearance="fill">
     <mat-label>Img cover link</mat-label>
     <input matInput placeholder="Cover link" formControlName="coverLink" />
-    <mat-error *ngIf="this.createCardForm.get('coverLink').hasError('required')"
+    <mat-error *ngIf="createCardForm.get('coverLink').hasError('required')"
       >Please enter a link to the image
     </mat-error>
-    <mat-error *ngIf="this.createCardForm.get('coverLink').hasError('pattern')"
+    <mat-error *ngIf="createCardForm.get('coverLink').hasError('pattern')"
       >The image link is invalid
     </mat-error>
   </mat-form-field>
@@ -35,10 +35,10 @@
   <mat-form-field class="create-card-form-field" appearance="fill">
     <mat-label>Video link</mat-label>
     <input matInput placeholder="Video link" formControlName="videoLink" />
-    <mat-error *ngIf="this.createCardForm.get('videoLink').hasError('required')"
+    <mat-error *ngIf="createCardForm.get('videoLink').hasError('required')"
       >Please enter a link to the video
     </mat-error>
-    <mat-error *ngIf="this.createCardForm.get('videoLink').hasError('pattern')"
+    <mat-error *ngIf="createCardForm.get('videoLink').hasError('pattern')"
       >The video link is invalid
     </mat-error>
   </mat-form-field>
@@ -48,10 +48,10 @@
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-    <mat-error *ngIf="this.createCardForm.get('creationDate').hasError('required')"
+    <mat-error *ngIf="createCardForm.get('creationDate').hasError('required')"
       >Please enter a creation date
     </mat-error>
-    <mat-error *ngIf="this.createCardForm.get('creationDate').hasError('futureDate')"
+    <mat-error *ngIf="createCardForm.get('creationDate').hasError('futureDate')"
       >The date is invalid
     </mat-error>
   </mat-form-field>

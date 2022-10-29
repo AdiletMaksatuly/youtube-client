@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Router} from "@angular/router";
-import {YoutubeRoutePaths} from "../../../youtube/models/routes.model";
+import { Router } from '@angular/router';
+import { YoutubeRoutePaths } from '../../../youtube/models/routes.model';
 
 @Component({
   selector: 'app-logo',
@@ -10,9 +10,9 @@ import {YoutubeRoutePaths} from "../../../youtube/models/routes.model";
 export class LogoComponent {
   private adminPageRoute = YoutubeRoutePaths.ADMIN_PAGE;
 
-  constructor(private router: Router) {
-  }
-  goToAdminPage() {
-    this.router.navigate(['main/' + this.adminPageRoute])
+  constructor(private router: Router) {}
+
+  goToAdminPage(): void {
+    this.router.navigate(['main/' + this.adminPageRoute]);
   }
 }
