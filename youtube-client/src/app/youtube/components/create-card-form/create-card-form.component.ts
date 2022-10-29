@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CreateCardFormValues } from '../../../auth/models/auth.model';
 import { URLPattern } from '../../models/url-pattern.constant';
 import { futureDateValidator } from '../../validators/future-date.validator';
+import { CreateCardFormValues } from '../../models/custom-card.model';
 
 @Component({
   selector: 'app-create-card-form',

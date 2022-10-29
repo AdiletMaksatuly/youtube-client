@@ -11,6 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { appReducer } from './redux/reducers/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './redux/effects/app.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +23,7 @@ import { EffectsModule } from '@ngrx/effects';
     CoreModule,
     StoreModule.forRoot({ app: appReducer }, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AppEffects]),
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
