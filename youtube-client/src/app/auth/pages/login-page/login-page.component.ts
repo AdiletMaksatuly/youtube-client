@@ -10,7 +10,7 @@ import { LoginFormValues } from '../../models/auth.model';
 export class LoginPageComponent {
   constructor(private loginService: LoginService) {}
 
-  onLogin({ username }: LoginFormValues): void {
-    this.loginService.loginUser(username);
+  onLogin({ email }: LoginFormValues): void {
+    this.loginService.loginUser(email);
   }
 }
