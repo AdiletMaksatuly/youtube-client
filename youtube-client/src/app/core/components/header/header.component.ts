@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 export class HeaderComponent {
   showFilter: boolean = false;
 
-  isLoggedIn: Observable<boolean> = this.loginService.isLoggedIn;
+  isLoggedIn$: Observable<boolean> = this.loginService.getIsLoggedIn$();
 
   constructor(
     private searchService: SearchService,

@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { YoutubeService } from '../../../services/youtube.service';
 import { Video } from '../../../models/video.model';
 import { FilterOrder, FilterType } from '../../../../core/models/filter.model';
-import { Observable } from 'rxjs';
+import { map, Observable, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-search-results',
@@ -16,48 +16,45 @@ export class SearchResultsComponent implements OnChanges, OnInit {
 
   @Input() filterString: string = '';
 
-  videos: Video[] = [];
-
-  public error: Error | null;
+  videos$: Observable<Video[]>;
 
   isNotFound: boolean;
 
   constructor(public youtubeService: YoutubeService) {}
 
   ngOnInit(): void {
-    this.searchQuery$.subscribe((newSearchQuery) => this.getVideos(newSearchQuery));
+    this.videos$ = this.searchQuery$.pipe(
+      switchMap((newSearchQuery) => this.youtubeService.getVideos(newSearchQuery)),
+      tap((value) => {
+        this.isNotFound = !value.length;
+      }),
+    );
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     // if searchQuery is the prop that triggered event, then do not sort
     if (changes['searchQuery']) return;
 
-    this.doSort([...this.videos]);
+    this.videos$ = this.videos$?.pipe(
+      map((videos) => {
+        return this.doSort([...videos]);
+      }),
+    );
   }
 
-  getVideos(searchQuery: string): void {
-    this.youtubeService.getVideos(searchQuery).subscribe((value) => {
-      // if new value came but there is an error from previous request
-      if (this.error !== null) this.error = null;
-
-      if (value instanceof Error) return (this.error = value);
-
-      if (value.length === 0) this.isNotFound = true;
-      return (this.videos = value);
-    });
-  }
-
-  doSort(videosToSort: Video[]): void {
+  doSort(videosToSort: Video[]): Video[] {
     if (this.filterQuery?.date) {
-      this.sortByDate(videosToSort, this.filterQuery.date);
+      return this.sortByDate(videosToSort, this.filterQuery.date);
     }
     if (this.filterQuery?.countOfViews) {
-      this.sortByCountOfViews(videosToSort, this.filterQuery.countOfViews);
+      return this.sortByCountOfViews(videosToSort, this.filterQuery.countOfViews);
     }
+
+    return videosToSort;
   }
 
-  sortByDate(videosToSort: Video[], filterOrder: FilterOrder): void {
-    this.videos = videosToSort.sort((videoA, videoB) => {
+  sortByDate(videosToSort: Video[], filterOrder: FilterOrder): Video[] {
+    return videosToSort.sort((videoA, videoB) => {
       const videoADate = new Date(videoA.snippet.publishedAt);
       const videoBDate = new Date(videoB.snippet.publishedAt);
 
@@ -67,8 +64,8 @@ export class SearchResultsComponent implements OnChanges, OnInit {
     });
   }
 
-  sortByCountOfViews(videosToSort: Video[], filterOrder: FilterOrder): void {
-    this.videos = videosToSort.sort((videoA, videoB) => {
+  sortByCountOfViews(videosToSort: Video[], filterOrder: FilterOrder): Video[] {
+    return videosToSort.sort((videoA, videoB) => {
       const videoAViews = videoA.statistics.viewCount;
       const videoBViews = videoB.statistics.viewCount;
 

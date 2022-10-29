@@ -27,7 +27,7 @@ export class YoutubeService {
     );
   }
 
-  getVideos(searchQuery: string): Observable<Video[] | Error> {
+  getVideos(searchQuery: string): Observable<Video[]> {
     return this.getVideoIDs(searchQuery)
       .pipe(
         switchMap((IDs) => {
@@ -42,20 +42,20 @@ export class YoutubeService {
       )
       .pipe(
         map((response) => response?.items),
-        catchError(this.handleError),
+        catchError(this.handleError<Video[]>),
       );
   }
 
-  getVideo(id: string): Observable<Video | Error> | null {
+  getVideo(id: string): Observable<Video> {
     const params = new HttpParams().set('part', 'snippet,statistics').set('id', id);
 
     return this.http.get<VideosListResponse>(this.VIDEOS_LIST_URL, { params }).pipe(
       map((response) => response.items[0]),
-      catchError(this.handleError),
+      catchError(this.handleError<Video>),
     );
   }
 
-  private handleError(error: HttpErrorResponse): Observable<Error> {
+  private handleError<T>(error: HttpErrorResponse): Observable<T> {
     if (error.status === 0) {
       // A client-side or network error occurred
       console.error('An error occurred:', error.error);
