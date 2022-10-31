@@ -2,7 +2,8 @@
   <li class="search-results-item" *ngFor="let video of videos$ | async | searchFilter: (searchQuery$ | async) : filterString">
     <app-search-item [video]="video"></app-search-item>
   </li>
-  <div *ngIf="isNotFound">
-    <h1>Not found!</h1>
-  </div>
 </ul>
+<mat-spinner *ngIf="isLoading$ | async" [diameter]="70"></mat-spinner>
+<div *ngIf="isNotFound">
+  <h1>Not found!</h1>
+</div>

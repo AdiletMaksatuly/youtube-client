@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { CreateCardFormValues } from '../../../auth/models/auth.model';
+import { CreateCardFormValues } from '../../models/custom-card.model';
+import { Store } from '@ngrx/store';
+import * as AppActions from '../../../redux/actions/app.actions';
 
 @Component({
   selector: 'app-admin-page',
@@ -7,7 +9,9 @@ import { CreateCardFormValues } from '../../../auth/models/auth.model';
   styleUrls: ['./admin-page.component.scss'],
 })
 export class AdminPageComponent {
+  constructor(private store: Store) {}
+
   onCreate(values: CreateCardFormValues): void {
-    console.log('submit', values);
+    this.store.dispatch(AppActions.createCustomCard({ customCard: values }));
   }
 }

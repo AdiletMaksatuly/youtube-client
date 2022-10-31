@@ -14,6 +14,10 @@ import { SharedModule } from '../shared/shared.module';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { CreateCardFormComponent } from './components/create-card-form/create-card-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { youtubeReducer } from './redux/reducers/youtube.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { YoutubeEffects } from './redux/effects/youtube.effects';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminPageComponent,
     CreateCardFormComponent,
   ],
-  imports: [CommonModule, SharedModule, YoutubeRoutingModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    YoutubeRoutingModule,
+    ReactiveFormsModule,
+    StoreModule.forFeature('youtube', youtubeReducer),
+    EffectsModule.forFeature([YoutubeEffects]),
+  ],
   exports: [],
 })
 export class YoutubeModule {}

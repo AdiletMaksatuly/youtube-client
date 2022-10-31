@@ -9,6 +9,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [],
@@ -23,6 +24,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class SharedModule {}

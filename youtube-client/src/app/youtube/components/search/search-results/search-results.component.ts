@@ -2,7 +2,10 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { YoutubeService } from '../../../services/youtube.service';
 import { Video } from '../../../models/video.model';
 import { FilterOrder, FilterType } from '../../../../core/models/filter.model';
-import { map, Observable, switchMap, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import * as YoutubeActions from '../../../redux/actions/youtube.actions';
+import { Store } from '@ngrx/store';
+import { selectLoadingStatus, selectVideos } from '../../../redux/selectors/youtube.selectors';
 
 @Component({
   selector: 'app-search-results',
@@ -16,24 +19,20 @@ export class SearchResultsComponent implements OnChanges, OnInit {
 
   @Input() filterString: string = '';
 
-  videos$: Observable<Video[]>;
+  isLoading$ = this.store.select(selectLoadingStatus);
+
+  videos$ = this.store.select(selectVideos);
 
   isNotFound: boolean;
 
-  constructor(public youtubeService: YoutubeService) {}
+  constructor(private youtubeService: YoutubeService, private store: Store) {}
 
   ngOnInit(): void {
-    this.videos$ = this.searchQuery$.pipe(
-      switchMap((newSearchQuery) => this.youtubeService.getVideos(newSearchQuery)),
-      tap((value) => {
-        this.isNotFound = !value.length;
-      }),
-    );
+    this.store.dispatch(YoutubeActions.fetchVideos());
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // if searchQuery is the prop that triggered event, then do not sort
-    if (changes['searchQuery']) return;
+    if (changes['searchQuery$']) return;
 
     this.videos$ = this.videos$?.pipe(
       map((videos) => {
