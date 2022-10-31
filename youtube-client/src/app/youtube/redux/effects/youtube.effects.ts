@@ -34,11 +34,10 @@ export class YoutubeEffects {
       ofType(YoutubeActions.fetchVideos),
       switchMap(() => this.searchService.getSearchQuery()),
       switchMap((searchQuery) =>
-        this.youtubeService.getVideos(searchQuery).pipe(
-          map((videos) => YoutubeActions.fetchVideosSuccess({ videos })),
-          catchError(() => of(YoutubeActions.fetchVideosFailed())),
-        ),
+        this.youtubeService.getVideos(searchQuery)
       ),
+      map((videos) => YoutubeActions.fetchVideosSuccess({ videos })),
+      catchError(() => of(YoutubeActions.fetchVideosFailed()))
     );
   });
 }
