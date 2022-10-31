@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { YoutubeService } from '../../../services/youtube.service';
 import { Video } from '../../../models/video.model';
 import { FilterOrder, FilterType } from '../../../../core/models/filter.model';
-import { debounceTime, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import * as YoutubeActions from '../../../redux/actions/youtube.actions';
 import { Store } from '@ngrx/store';
 import { selectLoadingStatus, selectVideos } from '../../../redux/selectors/youtube.selectors';
@@ -19,7 +19,7 @@ export class SearchResultsComponent implements OnChanges, OnInit {
 
   @Input() filterString: string = '';
 
-  isLoading$ = this.store.select(selectLoadingStatus).pipe(debounceTime(0));
+  isLoading$ = this.store.select(selectLoadingStatus);
 
   videos$ = this.store.select(selectVideos);
 
